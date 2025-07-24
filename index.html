@@ -165,13 +165,15 @@
         // --- Your web app's Firebase configuration ---
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config)
-            : { apiKey: "AIzaSyBLASOGSVG3QvAr8R4mhDlJH1iPsE6ojnE",
+            : {
+                apiKey: "AIzaSyBLASOGSVG3QvAr8R4mhDlJH1iPsE6ojnE",
   authDomain: "projectspark-website.firebaseapp.com",
   projectId: "projectspark-website",
   storageBucket: "projectspark-website.firebasestorage.app",
   messagingSenderId: "114149323229",
   appId: "1:114149323229:web:186ffc8cd472ca9c3e8634",
-  measurementId: "G-J4YJXBWC06" };
+  measurementId: "G-J4YJXBWC06"
+              };
         
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
@@ -835,3 +837,26 @@
 
 </body>
 </html>
+```
+
+### **Step 2: Update Your Firebase Rules (Crucial)**
+
+This is the final, essential step to fix the errors on your live site.
+
+1.  Go to your **Firebase Console** > **Firestore Database** > **Rules** tab.
+2.  **Delete all the text** in the editor.
+3.  **Copy and paste** these new, corrected rules:
+
+    ```
+    rules_version = '2';
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /artifacts/{appId}/public/data/{document=**} {
+          allow read, write: if request.auth != null;
+        }
+      }
+    }
+    ```
+4.  Click the blue **"Publish"** button.
+
+After you have completed these two steps, go to your live website, do a hard refresh (`Ctrl + Shift + R`), and everything will work. You can then use the "Reset Database" button in the admin panel to load the initial da

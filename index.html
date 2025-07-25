@@ -35,7 +35,7 @@
             @apply text-lg text-gray-500 text-center mt-2 mb-12 max-w-2xl mx-auto;
         }
         .category-card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer flex flex-col items-start text-left group;
+            @apply bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer flex flex-col items-center text-center;
         }
         .modal-nav-btn {
             @apply flex items-center justify-center px-4 py-2 rounded-lg font-medium text-gray-700 bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 shadow-sm;
@@ -45,12 +45,6 @@
         }
         .modal-nav-btn.active:hover {
              @apply bg-blue-700 text-white border-blue-700;
-        }
-        .btn-admin {
-            @apply flex items-center w-full text-left px-4 py-3 rounded-lg font-semibold text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 shadow-sm;
-        }
-        .btn-danger {
-            @apply flex items-center w-full text-left px-4 py-3 rounded-lg font-semibold text-red-700 bg-red-50 border border-red-300 hover:bg-red-100 hover:border-red-400 transition-all duration-200 shadow-sm;
         }
     </style>
 </head>
@@ -144,7 +138,7 @@
     <div id="categorized-projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-full overflow-y-auto"><div class="flex justify-between items-center p-5 border-b"><h3 id="categorized-modal-title" class="text-2xl font-semibold">Project Ideas</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6" id="categorized-project-content"></div></div></div>
     
     <!-- Admin Login Modal -->
-    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Admin Panel</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div id="login-view" class="p-6"><form id="login-form"><div class="mb-4"><label for="password" class="block text-gray-700 font-medium mb-2">Password</label><input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><p id="login-error" class="text-red-500 text-sm mt-1 hidden">Incorrect password.</p></div><button type="submit" class="w-full btn-primary">Login</button></form></div><div id="admin-options-view" class="p-6 hidden"><div class="flex flex-col space-y-3"><button id="open-add-project-btn" class="btn-admin"><i data-feather="plus-circle" class="w-5 h-5 mr-3"></i>Add New Project</button><button id="open-manage-projects-btn" class="btn-admin"><i data-feather="edit" class="w-5 h-5 mr-3"></i>Manage Projects</button><button id="open-manage-categories-btn" class="btn-admin"><i data-feather="tag" class="w-5 h-5 mr-3"></i>Manage Categories</button><button id="open-manage-boards-btn" class="btn-admin"><i data-feather="server" class="w-5 h-5 mr-3"></i>Manage Boards</button><button id="reset-database-btn" class="btn-danger mt-4"><i data-feather="trash-2" class="w-5 h-5 mr-3"></i>Reset Database</button></div></div></div></div>
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Admin Panel</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div id="login-view" class="p-6"><form id="login-form"><div class="mb-4"><label for="password" class="block text-gray-700 font-medium mb-2">Password</label><input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><p id="login-error" class="text-red-500 text-sm mt-1 hidden">Incorrect password.</p></div><button type="submit" class="w-full btn-primary">Login</button></form></div><div id="admin-options-view" class="p-6 hidden"><div class="flex flex-col space-y-4"><button id="open-add-project-btn" class="btn-secondary">Add New Project</button><button id="open-manage-projects-btn" class="btn-secondary">Manage Projects</button><button id="open-manage-categories-btn" class="btn-secondary">Manage Categories</button><button id="open-manage-boards-btn" class="btn-secondary">Manage Boards</button><button id="reset-database-btn" class="bg-red-100 text-red-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-red-200 transform hover:-translate-y-0.5 transition-all duration-300">Reset Database</button></div></div></div></div>
 
     <!-- Add/Edit Project Modal -->
     <div id="add-edit-project-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-lg"><div class="flex justify-between items-center p-5 border-b"><h3 id="add-edit-modal-title" class="text-2xl font-semibold">Add New Project</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6"><form id="add-edit-project-form"><input type="hidden" id="project-id"><div class="space-y-4"><div class="mb-4"><label for="project-title" class="block text-gray-700 font-medium mb-2">Project Title</label><input type="text" id="project-title" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></div><div class="mb-4"><label for="project-board" class="block text-gray-700 font-medium mb-2">Board</label><select id="project-board" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></select></div><div class="mb-4"><label for="project-category" class="block text-gray-700 font-medium mb-2">Category</label><select id="project-category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></select></div></div><button type="submit" id="save-project-btn" class="w-full btn-primary mt-6">Save Project</button></form></div></div></div>
@@ -171,15 +165,13 @@
         // --- Your web app's Firebase configuration ---
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config)
-            : {
-                apiKey: "AIzaSyBLASOGSVG3QvAr8R4mhDlJH1iPsE6ojnE",
-                authDomain: "projectspark-website.firebaseapp.com",
-                projectId: "projectspark-website",
-                storageBucket: "projectspark-website.appspot.com",
-                messagingSenderId: "114149323229",
-                appId: "1:114149323229:web:186ffc8cd472ca9c3e8634",
-                measurementId: "G-J4YJXBWC06"
-              };
+            : {apiKey: "AIzaSyBLASOGSVG3QvAr8R4mhDlJH1iPsE6ojnE",
+  authDomain: "projectspark-website.firebaseapp.com",
+  projectId: "projectspark-website",
+  storageBucket: "projectspark-website.firebasestorage.app",
+  messagingSenderId: "114149323229",
+  appId: "1:114149323229:web:186ffc8cd472ca9c3e8634",
+  measurementId: "G-J4YJXBWC06" };
         
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
@@ -197,32 +189,15 @@
         // --- BASE PROJECT DATA (for one-time seeding) ---
         const baseData = {
             boards: [
-                { id: 'mini', name: 'Mini Projects', shortName: 'Mini', description: 'Perfect for beginners. Simple circuits and fundamental concepts.', color: 'E9F2FF/3B82F6', icon: 'cpu' },
-                { id: 'arduino', name: 'Arduino', shortName: 'Arduino', description: 'Versatile projects covering robotics, sensors, automation, and more.', color: 'E0F2F1/0D9488', icon: 'radio' },
-                { id: 'esp', name: 'ESP32 / ESP8266', shortName: 'ESP32', description: 'Advanced IoT, Wi-Fi, and Bluetooth-enabled projects for the modern world.', color: 'ECFDF5/10B981', icon: 'wifi' },
-                { id: 'rpi', name: 'Raspberry Pi', shortName: 'RPi', description: 'Powerful projects involving computer vision, networking, and emulation.', color: 'FEF2F2/DC2626', icon: 'server' }
+                { id: 'mini', name: 'Mini Projects', shortName: 'Mini', description: 'Perfect for beginners. Simple circuits and fundamental concepts.', color: 'E9F2FF/3B82F6' },
+                { id: 'arduino', name: 'Arduino', shortName: 'Arduino', description: 'Versatile projects covering robotics, sensors, automation, and more.', color: 'E0F2F1/0D9488' },
+                { id: 'esp', name: 'ESP32 / ESP8266', shortName: 'ESP32', description: 'Advanced IoT, Wi-Fi, and Bluetooth-enabled projects for the modern world.', color: 'ECFDF5/10B981' },
+                { id: 'rpi', name: 'Raspberry Pi', shortName: 'RPi', description: 'Powerful projects involving computer vision, networking, and emulation.', color: 'FEF2F2/DC2626' }
             ],
             categories: {
-                arduino: [
-                    { name: "Sensor Based", icon: "activity" },
-                    { name: "Bluetooth (HC-05)", icon: "bluetooth" },
-                    { name: "GSM & GPS", icon: "radio" },
-                    { name: "Wireless (RF/nRF/LoRa)", icon: "wifi-off" },
-                    { name: "Robotics & Automation", icon: "cpu" },
-                    { name: "Displays & Interfaces", icon: "monitor" }
-                ],
-                esp: [
-                    { name: "WiFi & IoT", icon: "wifi" },
-                    { name: "Bluetooth & BLE", icon: "bluetooth" },
-                    { name: "ESP-NOW & LoRa", icon: "zap" },
-                    { name: "Camera (ESP32-CAM)", icon: "camera" },
-                    { name: "Automation & Control", icon: "sliders" }
-                ],
-                rpi: [
-                    { name: "Computer Vision & AI", icon: "eye" },
-                    { name: "Automation & Robotics", icon: "cpu" },
-                    { name: "Networking & Security", icon: "shield" }
-                ]
+                arduino: ["Sensor Based", "Bluetooth (HC-05)", "GSM & GPS", "Wireless (RF/nRF/LoRa)", "Robotics & Automation", "Displays & Interfaces"],
+                esp: ["WiFi & IoT", "Bluetooth & BLE", "ESP-NOW & LoRa", "Camera (ESP32-CAM)", "Automation & Control"],
+                rpi: ["Computer Vision & AI", "Automation & Robotics", "Networking & Security"]
             },
             projects: {
                 mini: ["LED Chaser/Sequencer", "Simple Touch Switch", "Rain Alarm", "Darkness Detector (LDR)", "Fire Alarm (Thermistor)","5V Regulated Power Supply", "Clap Switch Circuit", "Police Siren (555 Timer)", "IR Remote Tester", "Mobile Phone Detector","Automatic Washroom Light", "Adjustable Timer (555)", "Simple Inverter Circuit", "FM Transmitter", "Audio Amplifier (LM386)","Crystal Tester", "Continuity Tester", "Logic Probe", "Water Pump Controller", "Battery Charger Circuit","Light Dimmer Circuit", "Flashing LED (Astable)", "Music Reactive LEDs", "Soil Moisture Sensor", "Automatic Street Light","IR Obstacle Detector", "DC Motor Speed Controller", "Phone Line Busy Indicator", "Simple Emergency Light", "Digital Object Counter","Temperature Controlled Fan", "Sound Generator (555)", "Over/Under Voltage Protection", "Simple Lie Detector", "Electronic Dice","Touchless Doorbell", "Anti-Theft Bag Alarm", "AC Mains Detector", "Simple Metal Detector", "LED VU Meter","Automatic Hand Sanitizer", "Clap-operated Fan Switch", "Short Circuit Indicator", "Phone Call Activated Relay", "Electronic Piano","Water Overflow Alarm", "Heat Sensor Alarm", "Car Reverse Parking Sensor", "Digital Thermometer (LM35)", "Automatic Plant Watering","Mosquito Repellent Circuit", "Light Activated Alarm", "Simple Intercom System", "TV Remote Jammer", "Zener Diode Tester","Capacitor Tester", "Inductor Tester", "AC Fan Speed Regulator", "Automatic Night Lamp", "Electronic Voting Machine","Digital Clock (ICs)", "Frequency Counter", "Gas Leakage Detector", "Smoke Detector", "Heartbeat Sensor (IR)","Digital Stop Watch", "Ultrasonic RADAR System", "Voice Recorder (ISD1820)", "Automatic Railway Gate", "Solar Powered LED Lamp","Line Follower (Analog)", "Obstacle Avoider (Analog)", "Mobile Signal Jammer", "Cell Phone Battery Charger", "Digital Voltmeter","Digital Ammeter", "Simple UPS System", "Electronic Code Lock", "Knock-based Door Lock", "Laser Security System","Automatic School Bell", "DC-DC Boost Converter", "Traffic Light Controller", "Dry Run Pump Protector", "Digital Capacitance Meter","Electronic Fuse", "Touch Dimmer Switch", "Room Heater Controller", "Simple Function Generator", "Solar Bug Zapper","Electronic Pest Repellent", "Reverse Polarity Protection", "Sound Operated Switch", "Highway Speed Checker", "Automatic Visitor Counter","Bike Turning Signal", "LED Matrix Display (8x8)", "Simple Radio Receiver", "Infrared Data Transmission", "Simple Power Bank","Door Open Alarm", "Variable Power Supply", "Audio Mixer", "Guitar Fuzz Pedal", "Electronic Metronome","Battery Level Indicator", "Mains Voltage Monitor", "Simple Logic Gate Tester", "Decade Counter Display", "Quiz Buzzer System","Random Number Generator", "LED Stroboscope", "Three-Phase Power Indicator", "Water Salinity Tester", "Air Flow Detector","Simple EMF Detector", "Fridge Door Alarm", "Static Electricity Detector", "Sound Amplifier using Transistors", "Simple Burglar Alarm","Object Counter with IR Sensor", "Remote Control Tester", "Automatic Fan Controller", "LED-based Thermometer", "Simple Solar Tracker","Electronic Candle", "Infrared Proximity Sensor", "Simple Tachometer", "Delay Timer using 555", "Touch-Free Switch","AC Power Control with TRIAC", "Simple Geiger Counter", "Soil pH Meter (Analog)", "Wind Speed Indicator", "Magnetic Field Detector"],
@@ -248,6 +223,8 @@
                 }
             }
         };
+
+        const iconMap = { "Sensor Based": "activity", "Bluetooth (HC-05)": "bluetooth", "GSM & GPS": "radio", "Wireless (RF/nRF/LoRa)": "wifi-off", "Robotics & Automation": "cpu", "Displays & Interfaces": "monitor", "WiFi & IoT": "wifi", "Bluetooth & BLE": "bluetooth", "ESP-NOW & LoRa": "zap", "Camera (ESP32-CAM)": "camera", "Automation & Control": "sliders", "Computer Vision & AI": "eye", "Networking & Security": "shield" };
 
         // --- UI POPULATION FUNCTIONS ---
         function populateList(containerId, data) {
@@ -278,14 +255,13 @@
             const listContainer = document.createElement('div');
 
             let isFirst = true;
-            const categoriesForBoard = allCategories[prefix] || [];
-            
-            categoriesForBoard.forEach((categoryObj, index) => {
+            Object.keys(data).sort().forEach((category, index) => {
                 const categoryId = `${prefix}-cat-${index}`;
-                
+                const iconName = iconMap[category] || 'box';
+
                 const button = document.createElement('button');
                 button.className = 'modal-nav-btn';
-                button.innerHTML = `<i data-feather="${categoryObj.icon || 'box'}" class="w-4 h-4 mr-2"></i><span>${categoryObj.name}</span>`;
+                button.innerHTML = `<i data-feather="${iconName}" class="w-4 h-4 mr-2"></i><span>${category}</span>`;
 
                 if (isFirst) button.classList.add('active');
                 button.setAttribute('data-target', categoryId);
@@ -293,21 +269,11 @@
 
                 const listWrapper = document.createElement('div');
                 listWrapper.id = categoryId;
-                listWrapper.className = 'p-6 rounded-lg border-l-4 transition-all duration-300';
-                if (!isFirst) {
-                    listWrapper.classList.add('hidden', 'border-transparent');
-                } else {
-                    listWrapper.classList.add('bg-blue-50', 'border-blue-500');
-                }
+                if (!isFirst) listWrapper.classList.add('hidden');
                 
-                const listTitle = document.createElement('h4');
-                listTitle.className = 'text-xl font-bold text-blue-800 mb-4';
-                listTitle.textContent = categoryObj.name;
-                listWrapper.appendChild(listTitle);
-
                 const list = document.createElement('ol');
                 list.className = "list-disc list-inside space-y-2 text-gray-700 pl-2";
-                (data[categoryObj.name] || []).forEach(item => {
+                (data[category] || []).forEach(item => {
                     const li = document.createElement('li');
                     li.textContent = item;
                     list.appendChild(li);
@@ -328,11 +294,7 @@
                     clickedButton.classList.add('active');
                     const targetId = clickedButton.getAttribute('data-target');
                     listContainer.querySelectorAll('div').forEach(list => {
-                        const isActive = list.id === targetId;
-                        list.classList.toggle('hidden', !isActive);
-                        list.classList.toggle('bg-blue-50', isActive);
-                        list.classList.toggle('border-blue-500', isActive);
-                        list.classList.toggle('border-transparent', !isActive);
+                        list.classList.toggle('hidden', list.id !== targetId);
                     });
                 }
             });
@@ -347,25 +309,8 @@
             container.innerHTML = '';
             
             allBoards.sort((a, b) => (a.id === 'mini') ? -1 : 1).forEach(board => {
-                 container.innerHTML += `
-                    <div data-board-id="${board.id}" class="category-card">
-                        <div class="flex-grow">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color:#${board.color.split('/')[0]}; color:#${board.color.split('/')[1]}">
-                                    <i data-feather="${board.icon || 'cpu'}" class="w-7 h-7"></i>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-800 ml-4">${board.name}</h3>
-                            </div>
-                            <p class="text-gray-500 mb-4">${board.description}</p>
-                        </div>
-                        <div class="mt-auto pt-4 border-t w-full">
-                            <span class="font-semibold text-blue-600 flex items-center group-hover:text-blue-700">
-                                View Projects <i data-feather="arrow-right" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1"></i>
-                            </span>
-                        </div>
-                    </div>`;
+                 container.innerHTML += `<div data-board-id="${board.id}" class="category-card"><img src="https://placehold.co/100x100/${board.color || 'E2E8F0/475569'}?text=${board.shortName}" alt="${board.name} Icon" class="rounded-full mb-4"><h3 class="text-2xl font-bold text-gray-800 mb-2">${board.name}</h3><p class="text-gray-500">${board.description}</p></div>`;
             });
-            feather.replace();
         }
 
         // --- MODAL HANDLING LOGIC ---
@@ -439,7 +384,7 @@
             } else {
                 projectCategorySelect.disabled = false;
                 const categories = allCategories[selectedBoard] || [];
-                categories.forEach(cat => projectCategorySelect.add(new Option(cat.name, cat.name)));
+                categories.forEach(cat => projectCategorySelect.add(new Option(cat, cat)));
             }
         }
         
@@ -511,8 +456,8 @@
                 (allCategories[board.id] || []).forEach(category => {
                     const item = document.createElement('div');
                     item.className = 'flex items-center justify-between p-3 rounded-lg bg-white shadow-sm';
-                    item.innerHTML = `<span class="flex items-center text-gray-700"><i data-feather="${category.icon || 'box'}" class="w-5 h-5 mr-3 text-gray-500"></i>${category.name}</span>
-                        <button class="delete-category-btn p-1 text-red-600 hover:text-red-800" data-board="${board.id}" data-category-name="${category.name}"><i data-feather="trash-2" class="w-5 h-5"></i></button>`;
+                    item.innerHTML = `<span class="text-gray-700">${category}</span>
+                        <button class="delete-category-btn p-1 text-red-600 hover:text-red-800" data-board="${board.id}" data-category="${category}"><i data-feather="trash-2" class="w-5 h-5"></i></button>`;
                     list.appendChild(item);
                 });
                 container.appendChild(list);
@@ -520,23 +465,19 @@
                 const addForm = document.createElement('form');
                 addForm.className = 'mt-4 flex items-center space-x-2';
                 addForm.innerHTML = `
-                    <input type="text" placeholder="New Category Name" class="new-cat-name flex-grow px-3 py-2 border border-gray-300 rounded-lg" required>
-                    <input type="text" placeholder="Icon Name" class="new-cat-icon w-32 px-3 py-2 border border-gray-300 rounded-lg" required>
+                    <input type="text" placeholder="New Category Name" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     <button type="submit" class="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700"><i data-feather="plus" class="w-5 h-5"></i></button>
                 `;
                 addForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const nameInput = e.target.querySelector('.new-cat-name');
-                    const iconInput = e.target.querySelector('.new-cat-icon');
-                    const newCategory = { name: nameInput.value.trim(), icon: iconInput.value.trim() };
-                    
-                    if (newCategory.name && newCategory.icon) {
+                    const input = e.target.querySelector('input');
+                    const newCategory = input.value.trim();
+                    if (newCategory) {
                         try {
                             const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", board.id);
                             await updateDoc(catDocRef, { list: arrayUnion(newCategory) });
                             alert('Category added!');
-                            nameInput.value = '';
-                            iconInput.value = '';
+                            input.value = '';
                         } catch (err) {
                              await setDoc(catDocRef, { list: [newCategory] });
                         }
@@ -569,8 +510,7 @@
                 <div><label class="block text-sm font-medium text-gray-700">Board Name</label><input type="text" id="new-board-name" placeholder="e.g. STM32" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
                 <div><label class="block text-sm font-medium text-gray-700">Description</label><input type="text" id="new-board-desc" placeholder="A short description" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
                 <div><label class="block text-sm font-medium text-gray-700">Short Name (for icon)</label><input type="text" id="new-board-short" placeholder="e.g. STM32" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
-                <div><label class="block text-sm font-medium text-gray-700">Icon Name (<a href="https://feathericons.com/" target="_blank" class="text-blue-600 underline">feathericons.com</a>)</label><input type="text" id="new-board-icon" placeholder="e.g. cpu" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
-                <button type="submit" class="md:col-span-2 bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 h-10 flex items-center justify-center"><i data-feather="plus" class="w-5 h-5 mr-2"></i>Add Board</button>
+                <button type="submit" class="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 h-10 flex items-center justify-center"><i data-feather="plus" class="w-5 h-5 mr-2"></i>Add Board</button>
             `;
             addForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -578,12 +518,11 @@
                 const id = name.toLowerCase().replace(/\s+/g, '-');
                 const description = document.getElementById('new-board-desc').value.trim();
                 const shortName = document.getElementById('new-board-short').value.trim();
-                const icon = document.getElementById('new-board-icon').value.trim();
 
-                if (name && id && description && shortName && icon && !allBoards.find(b => b.id === id)) {
+                if (name && id && description && shortName && !allBoards.find(b => b.id === id)) {
                     try {
                         const boardDocRef = doc(db, "artifacts", appId, "public", "data", "boards", id);
-                        await setDoc(boardDocRef, { id, name, description, shortName, icon, color: 'E2E8F0/475569' });
+                        await setDoc(boardDocRef, { id, name, description, shortName, color: 'E2E8F0/475569' });
 
                         const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", id);
                         await setDoc(catDocRef, { list: [] });
@@ -716,10 +655,10 @@
             document.getElementById('category-management-content').addEventListener('click', (e) => {
                 const deleteBtn = e.target.closest('.delete-category-btn');
                 if (deleteBtn) {
-                    const { board, categoryName } = deleteBtn.dataset;
-                    deleteConfirmText.textContent = `Are you sure you want to delete the '${categoryName}' category? This will not delete the projects within it, but they will become uncategorized.`;
+                    const { board, category } = deleteBtn.dataset;
+                    deleteConfirmText.textContent = `Are you sure you want to delete the '${category}' category? This will not delete the projects within it, but they will become uncategorized.`;
                     confirmDeleteBtn.dataset.board = board;
-                    confirmDeleteBtn.dataset.categoryName = categoryName;
+                    confirmDeleteBtn.dataset.category = category;
                     confirmDeleteBtn.dataset.type = 'category';
                     openModal('delete-confirm-modal');
                 }
@@ -746,19 +685,16 @@
             });
 
             confirmDeleteBtn.addEventListener('click', async () => {
-                const { id, type, board, categoryName, boardId } = confirmDeleteBtn.dataset;
+                const { id, type, board, category, boardId } = confirmDeleteBtn.dataset;
                 
                 try {
                     if (type === 'project' && id) {
                         await deleteDoc(doc(db, "artifacts", appId, "public", "data", "projects", id));
                         alert('Project deleted successfully!');
-                    } else if (type === 'category' && board && categoryName) {
+                    } else if (type === 'category' && board && category) {
                         const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", board);
-                        const categoryToRemove = (allCategories[board] || []).find(c => c.name === categoryName);
-                        if (categoryToRemove) {
-                            await updateDoc(catDocRef, { list: arrayRemove(categoryToRemove) });
-                            alert('Category deleted successfully!');
-                        }
+                        await updateDoc(catDocRef, { list: arrayRemove(category) });
+                        alert('Category deleted successfully!');
                     } else if (type === 'board' && boardId) {
                         await deleteDoc(doc(db, "artifacts", appId, "public", "data", "boards", boardId));
                         await deleteDoc(doc(db, "artifacts", appId, "public", "data", "categories", boardId));

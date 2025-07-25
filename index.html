@@ -285,7 +285,7 @@
                 
                 const button = document.createElement('button');
                 button.className = 'modal-nav-btn';
-                button.innerHTML = `<i data-feather="${categoryObj.icon || 'box'}" class="w-4 h-4 mr-2"></i><span>${categoryObj.name}</span>`;
+                button.innerHTML = `<span>${categoryObj.name}</span>`;
 
                 if (isFirst) button.classList.add('active');
                 button.setAttribute('data-target', categoryId);
@@ -848,45 +848,44 @@
                 const categoriesCol = collection(db, "artifacts", appId, "public", "data", "categories");
                 const boardsCol = collection(db, "artifacts", appId, "public", "data", "boards");
                 
-                onSnapshot(boardsCol, async (boardSnapshot) => {
-                    if (boardSnapshot.empty) {
+                onSnapshot(boardsCol, async (snapshot) => {
+                    if (snapshot.empty) {
                         await seedDatabase();
                     } else {
-                        allBoards = boardSnapshot.docs.map(doc => doc.data());
-                        
-                        onSnapshot(categoriesCol, (catSnapshot) => {
-                            allCategories = {};
-                            catSnapshot.docs.forEach(doc => {
-                                allCategories[doc.id] = doc.data().list;
-                            });
-
-                            onSnapshot(projectsCol, (projSnapshot) => {
-                                firestoreProjects = projSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                                allProjects = {};
-                                allBoards.forEach(b => allProjects[b.id] = b.id === 'mini' ? [] : {});
-
-                                firestoreProjects.forEach(project => {
-                                    if (project.board === 'mini') {
-                                        if (!allProjects.mini) allProjects.mini = [];
-                                        allProjects.mini.push(project.title);
-                                    } else if (allProjects[project.board]) {
-                                        if (!allProjects[project.board][project.category]) {
-                                            allProjects[project.board][project.category] = [];
-                                        }
-                                        allProjects[project.board][project.category].push(project.title);
-                                    }
-                                });
-                                
-                                // Now that all data is loaded, render the UI
-                                renderProjectCategoryCards();
-                                updateBoardDropdowns();
-                                updateCategoryDropdown();
-                                renderAllLists();
-                                populateManagementConsole();
-                            });
-                        });
+                        allBoards = snapshot.docs.map(doc => doc.data());
+                        renderProjectCategoryCards();
+                        updateBoardDropdowns();
                     }
+                });
+
+                onSnapshot(categoriesCol, (snapshot) => {
+                    allCategories = {};
+                    snapshot.docs.forEach(doc => {
+                        allCategories[doc.id] = doc.data().list;
+                    });
+                    updateCategoryDropdown();
+                });
+
+                onSnapshot(projectsCol, (snapshot) => {
+                    firestoreProjects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                    allProjects = {};
+                    allBoards.forEach(b => allProjects[b.id] = b.id === 'mini' ? [] : {});
+
+                    firestoreProjects.forEach(project => {
+                        if (project.board === 'mini') {
+                            if (!allProjects.mini) allProjects.mini = [];
+                            allProjects.mini.push(project.title);
+                        } else if (allProjects[project.board]) {
+                            if (!allProjects[project.board][project.category]) {
+                                allProjects[project.board][project.category] = [];
+                            }
+                            allProjects[project.board][project.category].push(project.title);
+                        }
+                    });
+
+                    renderAllLists();
+                    populateManagementConsole();
                 });
 
             } catch (error) {

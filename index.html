@@ -851,7 +851,6 @@
                 onSnapshot(boardsCol, async (boardSnapshot) => {
                     if (boardSnapshot.empty) {
                         await seedDatabase();
-                        // Seeding will trigger this listener again, so we don't need to do anything else here.
                     } else {
                         allBoards = boardSnapshot.docs.map(doc => doc.data());
                         
@@ -901,4 +900,3 @@
 
 </body>
 </html>
-

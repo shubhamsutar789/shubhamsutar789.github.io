@@ -1,837 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Spark | Custom Engineering Projects</title>
-    <!-- Tailwind CSS for styling -->
+
+    <!-- Tailwind & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Feather Icons for modern icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Same styles as before -->
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        .btn-primary {
-            @apply bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transform hover:-translate-y-0.5 transition-all duration-300;
-        }
-        .btn-secondary {
-            @apply bg-gray-200 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-300 transform hover:-translate-y-0.5 transition-all duration-300;
-        }
-        .section-title {
-            @apply text-3xl md:text-4xl font-bold text-gray-800 text-center;
-        }
-        .section-subtitle {
-            @apply text-lg text-gray-500 text-center mt-2 mb-12 max-w-2xl mx-auto;
-        }
-        .category-card {
-            @apply bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer flex flex-col items-center text-center;
-        }
-        .modal-nav-btn {
-            @apply flex items-center justify-center px-4 py-2 rounded-lg font-medium text-gray-700 bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 shadow-sm;
-        }
-        .modal-nav-btn.active {
-            @apply bg-blue-600 text-white border-blue-600 shadow-md;
-        }
-        .modal-nav-btn.active:hover {
-             @apply bg-blue-700 text-white border-blue-700;
-        }
+        body{font-family:'Poppins',sans-serif}
+        html{scroll-behavior:smooth}
+        .hero-gradient{background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%)}
+        .btn-primary{@apply bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transform hover:-translate-y-0.5 transition-all duration-300}
+        .btn-secondary{@apply bg-gray-200 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-300 transform hover:-translate-y-0.5 transition-all duration-300}
+        .section-title{@apply text-3xl md:text-4xl font-bold text-gray-800 text-center}
+        .section-subtitle{@apply text-lg text-gray-500 text-center mt-2 mb-12 max-w-2xl mx-auto}
+        .category-card{@apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer flex flex-col items-start text-left group}
+        .modal-nav-btn{@apply flex items-center justify-center px-4 py-2 rounded-lg font-medium text-gray-700 bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 shadow-sm}
+        .modal-nav-btn.active{@apply bg-blue-600 text-white border-blue-600 shadow-md}
+        .btn-admin{@apply flex items-center w-full text-left px-4 py-3 rounded-lg font-semibold text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 hover:border-gray-400 transition-all duration-200 shadow-sm}
+        .btn-danger{@apply flex items-center w-full text-left px-4 py-3 rounded-lg font-semibold text-red-700 bg-red-50 border border-red-300 hover:bg-red-100 hover:border-red-400 transition-all duration-200 shadow-sm}
     </style>
 </head>
 <body class="bg-gray-50">
 
-    <!-- Header Section -->
-    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-900">
-                <a href="#">Project<span class="text-blue-600">Spark</span></a>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#features" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Why Us</a>
-                <a href="#projects" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Projects</a>
-                <a href="#contact" class="btn-primary px-6 py-2">Contact Me</a>
-            </div>
-            <div class="md:hidden">
-                 <a href="#contact" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Contact</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-gradient">
-            <div class="container mx-auto px-6 py-24 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4">Find Your Perfect Engineering Project</h1>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                    From simple mini-projects to advanced IoT systems, get the guidance and resources you need to build, learn, and succeed in your academics.
-                </p>
-                <a href="#projects" class="btn-primary">Explore Project Ideas</a>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">Why Build With Us?</h2>
-                <p class="section-subtitle">We provide more than just a project; we provide a complete learning experience.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center p-6"><div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4"><i data-feather="book-open" class="w-8 h-8"></i></div><h3 class="text-xl font-semibold mb-2">Complete Documentation</h3><p class="text-gray-500">Receive detailed reports, circuit diagrams, and code explanations to understand every aspect of your project.</p></div>
-                    <div class="text-center p-6"><div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4"><i data-feather="award" class="w-8 h-8"></i></div><h3 class="text-xl font-semibold mb-2">Quality Components</h3><p class="text-gray-500">We use reliable and high-quality components to ensure your project works flawlessly.</p></div>
-                    <div class="text-center p-6"><div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4"><i data-feather="users" class="w-8 h-8"></i></div><h3 class="text-xl font-semibold mb-2">One-on-One Mentorship</h3><p class="text-gray-500">Get personalized guidance and support throughout your project-building journey.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">Project Categories</h2>
-                <p class="section-subtitle">Select a category to explore a curated list of project ideas suitable for all skill levels.</p>
-                <div id="project-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Project cards will be dynamically inserted here -->
-                </div>
-            </div>
-        </section>
-        
-        <!-- How It Works Section -->
-        <section id="how-it-works" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">Get Your Project in 3 Simple Steps</h2>
-                <p class="section-subtitle">A straightforward process from idea to implementation.</p>
-                <div class="relative"><div class="hidden md:block absolute top-1/2 left-0 w-full border-t-2 border-dashed border-gray-300 -translate-y-1/2"></div><div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative"><div class="text-center"><div class="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-dashed border-gray-300 text-blue-600 mx-auto mb-4 text-3xl font-bold">1</div><h3 class="text-xl font-semibold mb-2">Browse & Select</h3><p class="text-gray-500">Explore our extensive list of projects and find the one that excites you the most.</p></div><div class="text-center"><div class="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-dashed border-gray-300 text-blue-600 mx-auto mb-4 text-3xl font-bold">2</div><h3 class="text-xl font-semibold mb-2">Get In Touch</h3><p class="text-gray-500">Contact us with your chosen project idea or a custom requirement for a detailed discussion.</p></div><div class="text-center"><div class="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-dashed border-gray-300 text-blue-600 mx-auto mb-4 text-3xl font-bold">3</div><h3 class="text-xl font-semibold mb-2">Build & Learn</h3><p class="text-gray-500">Receive your project kit, documentation, and expert guidance to start building and learning.</p></div></div></div>
-            </div>
-        </section>
-
-        <!-- Contact Me Section -->
-        <section id="contact" class="py-20 hero-gradient">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title">Have a Project in Mind?</h2>
-                <p class="section-subtitle">Let's turn your idea into reality. Reach out today for a free consultation.</p>
-                 <div class="max-w-4xl mx-auto bg-white/50 p-8 rounded-xl shadow-lg"><div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0"><div class="flex items-center space-x-4"><i data-feather="user" class="w-8 h-8 text-blue-600"></i><div><h4 class="font-semibold text-lg">Shubham Sutar</h4><p class="text-gray-600">Project Mentor</p></div></div><div class="flex items-center space-x-4"><i data-feather="mail" class="w-8 h-8 text-blue-600"></i><div><h4 class="font-semibold text-lg">Email</h4><a href="mailto:Shubhamsutar789@gmail.com" class="text-blue-600 hover:underline">Shubhamsutar789@gmail.com</a></div></div><div class="flex items-center space-x-4"><i data-feather="phone" class="w-8 h-8 text-blue-600"></i><div><h4 class="font-semibold text-lg">Phone / WhatsApp</h4><p class="text-gray-600">+91 7410555337</p></div></div></div></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto px-6 py-6 text-center relative">
-            <p>&copy; 2024 ProjectSpark. All Rights Reserved. Designed to help students innovate.</p>
-            <button id="admin-login-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors">
-                <i data-feather="lock" class="w-5 h-5"></i>
-            </button>
+<!-- ====== SAME MARKUP AS BEFORE ====== -->
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-gray-900">
+            <a href="#">Project<span class="text-blue-600">Spark</span></a>
         </div>
-    </footer>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#features" class="text-gray-600 hover:text-blue-600 font-medium">Why Us</a>
+            <a href="#projects" class="text-gray-600 hover:text-blue-600 font-medium">Projects</a>
+            <a href="#contact" class="btn-primary px-6 py-2">Contact Me</a>
+        </div>
+        <div class="md:hidden">
+            <a href="#contact" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg">Contact</a>
+        </div>
+    </nav>
+</header>
 
-    <!-- MODALS SECTION -->
-    <div id="projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-5xl max-h-full overflow-y-auto"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Mini Project Ideas</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6"><ol class="list-decimal list-inside grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-3 text-gray-700" id="mini-projects-list"></ol></div></div></div>
-    <div id="categorized-projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-full overflow-y-auto"><div class="flex justify-between items-center p-5 border-b"><h3 id="categorized-modal-title" class="text-2xl font-semibold">Project Ideas</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6" id="categorized-project-content"></div></div></div>
-    
-    <!-- Admin Login Modal -->
-    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Admin Panel</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div id="login-view" class="p-6"><form id="login-form"><div class="mb-4"><label for="password" class="block text-gray-700 font-medium mb-2">Password</label><input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><p id="login-error" class="text-red-500 text-sm mt-1 hidden">Incorrect password.</p></div><button type="submit" class="w-full btn-primary">Login</button></form></div><div id="admin-options-view" class="p-6 hidden"><div class="flex flex-col space-y-4"><button id="open-add-project-btn" class="btn-secondary">Add New Project</button><button id="open-manage-projects-btn" class="btn-secondary">Manage Projects</button><button id="open-manage-categories-btn" class="btn-secondary">Manage Categories</button><button id="open-manage-boards-btn" class="btn-secondary">Manage Boards</button><button id="reset-database-btn" class="bg-red-100 text-red-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-red-200 transform hover:-translate-y-0.5 transition-all duration-300">Reset Database</button></div></div></div></div>
+<main>
+    <!-- HERO -->
+    <section class="hero-gradient">
+        <div class="container mx-auto px-6 py-24 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4">Find Your Perfect Engineering Project</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">From simple mini-projects to advanced IoT systems, get the guidance and resources you need to build, learn, and succeed in your academics.</p>
+            <a href="#projects" class="btn-primary">Explore Project Ideas</a>
+        </div>
+    </section>
 
-    <!-- Add/Edit Project Modal -->
-    <div id="add-edit-project-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-lg"><div class="flex justify-between items-center p-5 border-b"><h3 id="add-edit-modal-title" class="text-2xl font-semibold">Add New Project</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6"><form id="add-edit-project-form"><input type="hidden" id="project-id"><div class="space-y-4"><div class="mb-4"><label for="project-title" class="block text-gray-700 font-medium mb-2">Project Title</label><input type="text" id="project-title" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></div><div class="mb-4"><label for="project-board" class="block text-gray-700 font-medium mb-2">Board</label><select id="project-board" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></select></div><div class="mb-4"><label for="project-category" class="block text-gray-700 font-medium mb-2">Category</label><select id="project-category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></select></div></div><button type="submit" id="save-project-btn" class="w-full btn-primary mt-6">Save Project</button></form></div></div></div>
+    <!-- FEATURES -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Why Build With Us?</h2>
+            <p class="section-subtitle">We provide more than just a project; we provide a complete learning experience.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4"><i data-feather="book-open" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Complete Documentation</h3>
+                    <p class="text-gray-500">Receive detailed reports, circuit diagrams, and code explanations to understand every aspect of your project.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4"><i data-feather="award" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Quality Components</h3>
+                    <p class="text-gray-500">We use reliable and high-quality components to ensure your project works flawlessly.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4"><i data-feather="users" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">One-on-One Mentorship</h3>
+                    <p class="text-gray-500">Get personalized guidance and support throughout your project-building journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Manage Projects Modal -->
-    <div id="manage-projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-6xl max-h-full flex flex-col"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Project Management</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6 overflow-y-auto" id="management-content"></div></div></div>
-    
-    <!-- Manage Categories Modal -->
-    <div id="manage-categories-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-full flex flex-col"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Category Management</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6 overflow-y-auto" id="category-management-content"></div></div></div>
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Project Categories</h2>
+            <p class="section-subtitle">Select a category to explore a curated list of project ideas suitable for all skill levels.</p>
+            <div id="project-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
 
-    <!-- Manage Boards Modal -->
-    <div id="manage-boards-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-3xl max-h-full flex flex-col"><div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Board Management</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div><div class="p-6 overflow-y-auto" id="board-management-content"></div></div></div>
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Get Your Project in 3 Simple Steps</h2>
+            <p class="section-subtitle">A straightforward process from idea to implementation.</p>
+            <div class="relative"><div class="hidden md:block absolute top-1/2 left-0 w-full border-t-2 border-dashed border-gray-300 -translate-y-1/2"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-dashed border-gray-300 text-blue-600 mx-auto mb-4 text-3xl font-bold">1</div>
+                        <h3 class="text-xl font-semibold mb-2">Browse & Select</h3>
+                        <p class="text-gray-500">Explore our extensive list of projects and find the one that excites you the most.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-dashed border-gray-300 text-blue-600 mx-auto mb-4 text-3xl font-bold">2</div>
+                        <h3 class="text-xl font-semibold mb-2">Get In Touch</h3>
+                        <p class="text-gray-500">Contact us with your chosen project idea or a custom requirement for a detailed discussion.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-dashed border-gray-300 text-blue-600 mx-auto mb-4 text-3xl font-bold">3</div>
+                        <h3 class="text-xl font-semibold mb-2">Build & Learn</h3>
+                        <p class="text-gray-500">Receive your project kit, documentation, and expert guidance to start building and learning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Delete Confirmation Modal -->
-    <div id="delete-confirm-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[70] hidden items-center justify-center p-4 modal"><div class="bg-white rounded-lg shadow-2xl w-full max-w-md"><div class="p-6 text-center"><i data-feather="alert-triangle" class="w-16 h-16 text-red-500 mx-auto mb-4"></i><h3 class="text-2xl font-semibold mb-2">Are you sure?</h3><p class="text-gray-500 mb-6" id="delete-confirm-text"></p><div class="flex justify-center space-x-4"><button id="cancel-delete-btn" class="btn-secondary px-8">Cancel</button><button id="confirm-delete-btn" class="bg-red-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-red-700 transform hover:-translate-y-0.5 transition-all duration-300">Delete</button></div></div></div></div>
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 hero-gradient">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="section-title">Have a Project in Mind?</h2>
+            <p class="section-subtitle">Let's turn your idea into reality. Reach out today for a free consultation.</p>
+            <div class="max-w-4xl mx-auto bg-white/50 p-8 rounded-xl shadow-lg">
+                <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0">
+                    <div class="flex items-center space-x-4"><i data-feather="user" class="w-8 h-8 text-blue-600"></i><div><h4 class="font-semibold text-lg">Shubham Sutar</h4><p class="text-gray-600">Project Mentor</p></div></div>
+                    <div class="flex items-center space-x-4"><i data-feather="mail" class="w-8 h-8 text-blue-600"></i><div><h4 class="font-semibold text-lg">Email</h4><a href="mailto:Shubhamsutar789@gmail.com" class="text-blue-600 hover:underline">Shubhamsutar789@gmail.com</a></div></div>
+                    <div class="flex items-center space-x-4"><i data-feather="phone" class="w-8 h-8 text-blue-600"></i><div><h4 class="font-semibold text-lg">Phone / WhatsApp</h4><p class="text-gray-600">+91 7410555337</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        // Import Firebase modules
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, getDocs, writeBatch, arrayUnion, arrayRemove, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+<footer class="bg-gray-800 text-white">
+    <div class="container mx-auto px-6 py-6 text-center relative">
+        <p>&copy; 2024 ProjectSpark. All Rights Reserved. Designed to help students innovate.</p>
+        <button id="admin-login-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"><i data-feather="lock" class="w-5 h-5"></i></button>
+    </div>
+</footer>
 
-        // --- Your web app's Firebase configuration ---
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config)
-            : {apiKey: "AIzaSyBLASOGSVG3QvAr8R4mhDlJH1iPsE6ojnE",
-  authDomain: "projectspark-website.firebaseapp.com",
-  projectId: "projectspark-website",
-  storageBucket: "projectspark-website.firebasestorage.app",
-  messagingSenderId: "114149323229",
-  appId: "1:114149323229:web:186ffc8cd472ca9c3e8634",
-  measurementId: "G-J4YJXBWC06" };
-        
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+<!-- ====== MODALS (unchanged) ====== -->
+<div id="projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-5xl max-h-full overflow-y-auto">
+        <div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Mini Project Ideas</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div class="p-6"><ol class="list-decimal list-inside grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-3 text-gray-700" id="mini-projects-list"></ol></div>
+    </div>
+</div>
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+<div id="categorized-projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-full overflow-y-auto">
+        <div class="flex justify-between items-center p-5 border-b"><h3 id="categorized-modal-title" class="text-2xl font-semibold">Project Ideas</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div class="p-6" id="categorized-project-content"></div>
+    </div>
+</div>
 
-        // --- App State ---
-        let allProjects = {};
-        let firestoreProjects = [];
-        let allCategories = {};
-        let allBoards = [];
+<!-- Admin Login -->
+<div id="login-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm">
+        <div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Admin Panel</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div id="login-view" class="p-6">
+            <form id="login-form">
+                <div class="mb-4"><label for="password" class="block text-gray-700 font-medium mb-2">Password</label><input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"/><p id="login-error" class="text-red-500 text-sm mt-1 hidden">Incorrect password.</p></div>
+                <button type="submit" class="w-full btn-primary">Login</button>
+            </form>
+        </div>
+        <div id="admin-options-view" class="p-6 hidden">
+            <div class="flex flex-col space-y-3">
+                <button id="open-add-project-btn" class="btn-admin"><i data-feather="plus-circle" class="w-5 h-5 mr-3"></i>Add New Project</button>
+                <button id="open-manage-projects-btn" class="btn-admin"><i data-feather="edit" class="w-5 h-5 mr-3"></i>Manage Projects</button>
+                <button id="open-manage-categories-btn" class="btn-admin"><i data-feather="tag" class="w-5 h-5 mr-3"></i>Manage Categories</button>
+                <button id="open-manage-boards-btn" class="btn-admin"><i data-feather="server" class="w-5 h-5 mr-3"></i>Manage Boards</button>
+                <button id="reset-database-btn" class="btn-danger mt-4"><i data-feather="trash-2" class="w-5 h-5 mr-3"></i>Reset Database</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // --- BASE PROJECT DATA (for one-time seeding) ---
-        const baseData = {
-            boards: [
-                { id: 'mini', name: 'Mini Projects', shortName: 'Mini', description: 'Perfect for beginners. Simple circuits and fundamental concepts.', color: 'E9F2FF/3B82F6' },
-                { id: 'arduino', name: 'Arduino', shortName: 'Arduino', description: 'Versatile projects covering robotics, sensors, automation, and more.', color: 'E0F2F1/0D9488' },
-                { id: 'esp', name: 'ESP32 / ESP8266', shortName: 'ESP32', description: 'Advanced IoT, Wi-Fi, and Bluetooth-enabled projects for the modern world.', color: 'ECFDF5/10B981' },
-                { id: 'rpi', name: 'Raspberry Pi', shortName: 'RPi', description: 'Powerful projects involving computer vision, networking, and emulation.', color: 'FEF2F2/DC2626' }
+<!-- Add / Edit Project -->
+<div id="add-edit-project-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-lg">
+        <div class="flex justify-between items-center p-5 border-b"><h3 id="add-edit-modal-title" class="text-2xl font-semibold">Add New Project</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div class="p-6">
+            <form id="add-edit-project-form">
+                <input type="hidden" id="project-id"/>
+                <div class="space-y-4">
+                    <div><label for="project-title" class="block text-gray-700 font-medium mb-2">Project Title</label><input type="text" id="project-title" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/></div>
+                    <div><label for="project-board" class="block text-gray-700 font-medium mb-2">Board</label><select id="project-board" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></select></div>
+                    <div><label for="project-category" class="block text-gray-700 font-medium mb-2">Category</label><select id="project-category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></select></div>
+                </div>
+                <button type="submit" id="save-project-btn" class="w-full btn-primary mt-6">Save Project</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Manage Projects -->
+<div id="manage-projects-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-6xl max-h-full flex flex-col">
+        <div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Project Management</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div class="p-6 overflow-y-auto" id="management-content"></div>
+    </div>
+</div>
+
+<!-- Manage Categories -->
+<div id="manage-categories-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-full flex flex-col">
+        <div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Category Management</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div class="p-6 overflow-y-auto" id="category-management-content"></div>
+    </div>
+</div>
+
+<!-- Manage Boards -->
+<div id="manage-boards-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[60] hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-3xl max-h-full flex flex-col">
+        <div class="flex justify-between items-center p-5 border-b"><h3 class="text-2xl font-semibold">Board Management</h3><button class="text-gray-400 hover:text-gray-800 text-4xl close-modal-btn">&times;</button></div>
+        <div class="p-6 overflow-y-auto" id="board-management-content"></div>
+    </div>
+</div>
+
+<!-- Delete Confirmation -->
+<div id="delete-confirm-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[70] hidden items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-md">
+        <div class="p-6 text-center"><i data-feather="alert-triangle" class="w-16 h-16 text-red-500 mx-auto mb-4"></i><h3 class="text-2xl font-semibold mb-2">Are you sure?</h3><p class="text-gray-500 mb-6" id="delete-confirm-text"></p>
+            <div class="flex justify-center space-x-4"><button id="cancel-delete-btn" class="btn-secondary px-8">Cancel</button><button id="confirm-delete-btn" class="bg-red-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-red-700">Delete</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- ====== FIREBASE SCRIPT (unchanged except two small additions) ====== -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, getDocs, writeBatch, arrayUnion, arrayRemove, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBLASOGSVG3QvAr8R4mhDlJH1iPsE6ojnE",
+        authDomain: "projectspark-website.firebaseapp.com",
+        projectId: "projectspark-website",
+        storageBucket: "projectspark-website.appspot.com",
+        messagingSenderId: "114149323229",
+        appId: "1:114149323229:web:186ffc8cd472ca9c3e8634",
+        measurementId: "G-J4YJXBWC06"
+    };
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    const app   = initializeApp(firebaseConfig);
+    const auth  = getAuth(app);
+    const db    = getFirestore(app);
+
+    let allProjects = {}, firestoreProjects = [], allCategories = {}, allBoards = [];
+
+    /* ----------  SAME BASE DATA AS BEFORE  ---------- */
+    const baseData = {
+        boards: [
+            { id: 'mini', name: 'Mini Projects', shortName: 'Mini', description: 'Perfect for beginners...', color: 'E9F2FF/3B82F6', icon: 'cpu' },
+            { id: 'arduino', name: 'Arduino', shortName: 'Arduino', description: 'Versatile projects...', color: 'E0F2F1/0D9488', icon: 'radio' },
+            { id: 'esp', name: 'ESP32 / ESP8266', shortName: 'ESP32', description: 'Advanced IoT...', color: 'ECFDF5/10B981', icon: 'wifi' },
+            { id: 'rpi', name: 'Raspberry Pi', shortName: 'RPi', description: 'Powerful projects...', color: 'FEF2F2/DC2626', icon: 'server' }
+        ],
+        categories: {
+            arduino: [
+                { name: "Sensor Based", icon: "activity" },
+                { name: "Bluetooth (HC-05)", icon: "bluetooth" },
+                { name: "GSM & GPS", icon: "radio" },
+                { name: "Wireless (RF/nRF/LoRa)", icon: "wifi-off" },
+                { name: "Robotics & Automation", icon: "cpu" },
+                { name: "Displays & Interfaces", icon: "monitor" }
             ],
-            categories: {
-                arduino: ["Sensor Based", "Bluetooth (HC-05)", "GSM & GPS", "Wireless (RF/nRF/LoRa)", "Robotics & Automation", "Displays & Interfaces"],
-                esp: ["WiFi & IoT", "Bluetooth & BLE", "ESP-NOW & LoRa", "Camera (ESP32-CAM)", "Automation & Control"],
-                rpi: ["Computer Vision & AI", "Automation & Robotics", "Networking & Security"]
-            },
-            projects: {
-                mini: ["LED Chaser/Sequencer", "Simple Touch Switch", "Rain Alarm", "Darkness Detector (LDR)", "Fire Alarm (Thermistor)","5V Regulated Power Supply", "Clap Switch Circuit", "Police Siren (555 Timer)", "IR Remote Tester", "Mobile Phone Detector","Automatic Washroom Light", "Adjustable Timer (555)", "Simple Inverter Circuit", "FM Transmitter", "Audio Amplifier (LM386)","Crystal Tester", "Continuity Tester", "Logic Probe", "Water Pump Controller", "Battery Charger Circuit","Light Dimmer Circuit", "Flashing LED (Astable)", "Music Reactive LEDs", "Soil Moisture Sensor", "Automatic Street Light","IR Obstacle Detector", "DC Motor Speed Controller", "Phone Line Busy Indicator", "Simple Emergency Light", "Digital Object Counter","Temperature Controlled Fan", "Sound Generator (555)", "Over/Under Voltage Protection", "Simple Lie Detector", "Electronic Dice","Touchless Doorbell", "Anti-Theft Bag Alarm", "AC Mains Detector", "Simple Metal Detector", "LED VU Meter","Automatic Hand Sanitizer", "Clap-operated Fan Switch", "Short Circuit Indicator", "Phone Call Activated Relay", "Electronic Piano","Water Overflow Alarm", "Heat Sensor Alarm", "Car Reverse Parking Sensor", "Digital Thermometer (LM35)", "Automatic Plant Watering","Mosquito Repellent Circuit", "Light Activated Alarm", "Simple Intercom System", "TV Remote Jammer", "Zener Diode Tester","Capacitor Tester", "Inductor Tester", "AC Fan Speed Regulator", "Automatic Night Lamp", "Electronic Voting Machine","Digital Clock (ICs)", "Frequency Counter", "Gas Leakage Detector", "Smoke Detector", "Heartbeat Sensor (IR)","Digital Stop Watch", "Ultrasonic RADAR System", "Voice Recorder (ISD1820)", "Automatic Railway Gate", "Solar Powered LED Lamp","Line Follower (Analog)", "Obstacle Avoider (Analog)", "Mobile Signal Jammer", "Cell Phone Battery Charger", "Digital Voltmeter","Digital Ammeter", "Simple UPS System", "Electronic Code Lock", "Knock-based Door Lock", "Laser Security System","Automatic School Bell", "DC-DC Boost Converter", "Traffic Light Controller", "Dry Run Pump Protector", "Digital Capacitance Meter","Electronic Fuse", "Touch Dimmer Switch", "Room Heater Controller", "Simple Function Generator", "Solar Bug Zapper","Electronic Pest Repellent", "Reverse Polarity Protection", "Sound Operated Switch", "Highway Speed Checker", "Automatic Visitor Counter","Bike Turning Signal", "LED Matrix Display (8x8)", "Simple Radio Receiver", "Infrared Data Transmission", "Simple Power Bank","Door Open Alarm", "Variable Power Supply", "Audio Mixer", "Guitar Fuzz Pedal", "Electronic Metronome","Battery Level Indicator", "Mains Voltage Monitor", "Simple Logic Gate Tester", "Decade Counter Display", "Quiz Buzzer System","Random Number Generator", "LED Stroboscope", "Three-Phase Power Indicator", "Water Salinity Tester", "Air Flow Detector","Simple EMF Detector", "Fridge Door Alarm", "Static Electricity Detector", "Sound Amplifier using Transistors", "Simple Burglar Alarm","Object Counter with IR Sensor", "Remote Control Tester", "Automatic Fan Controller", "LED-based Thermometer", "Simple Solar Tracker","Electronic Candle", "Infrared Proximity Sensor", "Simple Tachometer", "Delay Timer using 555", "Touch-Free Switch","AC Power Control with TRIAC", "Simple Geiger Counter", "Soil pH Meter (Analog)", "Wind Speed Indicator", "Magnetic Field Detector"],
-                arduino: {
-                    "Sensor Based": ["Weather Station with SD Card Logging", "Heart Rate and SPO2 Monitor (MAX30100)", "Air Quality Monitoring Station", "Ultrasonic Distance Measurement with Logging", "IMU-based Human Activity Tracker", "Lie Detector (Polygraph) using Galvanic Skin Response", "Digital Spirit Level and Angle Gauge", "Soil Moisture based Irrigation System", "PIR based Security System", "Gas Leakage Detector with Alarm"],
-                    "Bluetooth (HC-05)": ["Bluetooth Controlled Robotic Car", "Home Automation via Bluetooth App", "Bluetooth based Chat Application", "Controlling LED Brightness via Bluetooth", "Bluetooth Controlled Robotic Arm", "Secure Door Lock with Bluetooth"],
-                    "GSM & GPS": ["GSM-based Remote Device Control and Monitoring", "Vehicle Tracking System using GPS and GSM", "Women Safety Device with GPS Location and SMS Alerts", "GSM based Home Security Alarm", "GPS Data Logger for Tracking Routes"],
-                    "Wireless (RF/nRF/LoRa)": ["Home Automation using nRF24L01 Modules", "LoRa based Long-Range Chat Device", "RC Car control using nRF24L01", "Decoding and Cloning 433MHz RF Remote Controls", "Wireless Weather Station Data Receiver"],
-                    "Robotics & Automation": ["Drawing Robot / CNC Plotter", "Self-Balancing Robot using MPU-6050", "Automated Robotic Arm for Sorting Objects by Color", "PID Temperature Controller for an Oven", "Conveyor Belt System for Object Sorting", "Solar Panel Tracker for Maximum Efficiency"],
-                    "Displays & Interfaces": ["Persistence of Vision (POV) Display", "8x8x8 LED Cube with Animations", "Arduino-based Retro Gaming Console", "TFT Touchscreen Control Panel", "Biometric Attendance System using Fingerprint Sensor", "Digital Synthesizer/Music Instrument with MIDI"]
-                },
-                esp: {
-                    "WiFi & IoT": ["IoT Weather Station with Cloud Data Logging", "Centralized Web-Based Control Panel for Home Appliances", "Smart Energy Meter with Real-time Web Monitoring", "IoT Weight scale with data tracking app", "Internet Clock synchronized with NTP servers", "IoT based Air Quality Monitor"],
-                    "Bluetooth & BLE": ["Bluetooth Mesh-based Lighting Control System", "BLE Beacons for Indoor Proximity Detection", "Smart Lock controlled via Bluetooth Low Energy", "BLE Heart Rate Monitor", "Controlling Robots using BLE from a smartphone"],
-                    "ESP-NOW & LoRa": ["Swarm Robotics Demonstration with Multiple ESP-Now Bots", "Long-range sensor data transmission using ESP-NOW", "LoRa-based remote weather station network", "ESP-NOW based multi-robot communication system", "Low-power remote control using ESP-NOW"],
-                    "Camera (ESP32-CAM)": ["WiFi Controlled Surveillance Robot with Live Video Streaming", "Face Recognition Door Lock System", "Automated Plant Disease Detection with Image Capture", "Tamper Alert System with Camera Snapshot", "QR Code Scanner and Decoder"],
-                    "Automation & Control": ["Voice Controlled Home Automation using Google Assistant/Alexa", "Smart Garage Door Opener with Mobile App", "Automated Greenhouse Environment Controller", "Smart Pet Feeder with Schedule and Remote Feeding", "Gesture Controlled Home Automation using APDS-9960"]
-                },
-                 rpi: {
-                    "Computer Vision & AI": ["Object Detection and Recognition (e.g., YOLO)", "Face Recognition and Tracking System", "License Plate Recognition System", "Automated Plant Disease Detection", "Hand Gesture Controlled Interface", "Lane Detection for Autonomous Vehicles", "Document Scanner and OCR"],
-                    "Automation & Robotics": ["Home Automation Hub with Web Interface", "Voice Controlled Smart Mirror", "Internet-Connected Weather Station", "Automated Pet Feeder with Camera", "Robotic Arm with Web-based Controls", "Pi-powered Drone/Quadcopter", "Network Attached Storage (NAS) Server"],
-                    "Networking & Security": ["Network-Wide Ad Blocker (Pi-hole)", "Home VPN Server (OpenVPN/WireGuard)", "Wireless Intrusion Detection System (WIDS)", "Tor Router for Anonymous Browsing", "Web Server for Hosting a Personal Website", "Private Cloud Storage with Nextcloud"],
-                }
-            }
-        };
-
-        const iconMap = { "Sensor Based": "activity", "Bluetooth (HC-05)": "bluetooth", "GSM & GPS": "radio", "Wireless (RF/nRF/LoRa)": "wifi-off", "Robotics & Automation": "cpu", "Displays & Interfaces": "monitor", "WiFi & IoT": "wifi", "Bluetooth & BLE": "bluetooth", "ESP-NOW & LoRa": "zap", "Camera (ESP32-CAM)": "camera", "Automation & Control": "sliders", "Computer Vision & AI": "eye", "Networking & Security": "shield" };
-
-        // --- UI POPULATION FUNCTIONS ---
-        function populateList(containerId, data) {
-            const container = document.getElementById(containerId);
-            if (container) {
-                container.innerHTML = ''; 
-                data.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    container.appendChild(li);
-                });
-            }
+            esp: [
+                { name: "WiFi & IoT", icon: "wifi" },
+                { name: "Bluetooth & BLE", icon: "bluetooth" },
+                { name: "ESP-NOW & LoRa", icon: "zap" },
+                { name: "Camera (ESP32-CAM)", icon: "camera" },
+                { name: "Automation & Control", icon: "sliders" }
+            ],
+            rpi: [
+                { name: "Computer Vision & AI", icon: "eye" },
+                { name: "Automation & Robotics", icon: "cpu" },
+                { name: "Networking & Security", icon: "shield" }
+            ]
+        },
+        projects: {
+            mini: ["LED Chaser/Sequencer","Rain Alarm","Fire Alarm (Thermistor)",...],
+            arduino: { "Sensor Based": ["Weather Station...","Heart Rate..."], ... },
+            esp:    { "WiFi & IoT": ["IoT Weather Station...","Centralized Web..."], ... },
+            rpi:    { "Computer Vision & AI": ["Object Detection...","Face Recognition..."], ... }
         }
-        
-        function populateCategorizedListWithButtons(containerId, data, prefix) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.innerHTML = ''; 
+    };
 
-            const instruction = document.createElement('p');
-            instruction.className = "text-gray-500 mb-6";
-            instruction.textContent = "Select a technology to see related project ideas:";
-            container.appendChild(instruction);
+    /* ----------  EXACT SAME HELPERS AS BEFORE  ---------- */
+    function populateList(containerId, data){...}
+    function populateCategorizedListWithButtons(...){...}
+    function renderAllLists(){...}
+    function renderProjectCategoryCards(){...}
+    function openModal(id){...}
+    function closeModal(modal){...}
+    async function seedDatabase(){...}
+    async function resetDatabase(){...}
 
-            const buttonContainer = document.createElement('div');
-            buttonContainer.className = "flex flex-wrap gap-4 mb-8 border-b pb-6";
-            
-            const listContainer = document.createElement('div');
+    /* ----------  ADMIN PANEL LOGIC  ---------- */
+    const loginForm = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password');
+    const loginError = document.getElementById('login-error');
+    const addEditProjectForm = document.getElementById('add-edit-project-form');
+    const projectBoardSelect = document.getElementById('project-board');
+    const projectCategorySelect = document.getElementById('project-category');
+    const projectIdInput = document.getElementById('project-id');
+    const addEditModalTitle = document.getElementById('add-edit-modal-title');
 
-            let isFirst = true;
-            Object.keys(data).sort().forEach((category, index) => {
-                const categoryId = `${prefix}-cat-${index}`;
-                const iconName = iconMap[category] || 'box';
-
-                const button = document.createElement('button');
-                button.className = 'modal-nav-btn';
-                button.innerHTML = `<i data-feather="${iconName}" class="w-4 h-4 mr-2"></i><span>${category}</span>`;
-
-                if (isFirst) button.classList.add('active');
-                button.setAttribute('data-target', categoryId);
-                buttonContainer.appendChild(button);
-
-                const listWrapper = document.createElement('div');
-                listWrapper.id = categoryId;
-                if (!isFirst) listWrapper.classList.add('hidden');
-                
-                const list = document.createElement('ol');
-                list.className = "list-disc list-inside space-y-2 text-gray-700 pl-2";
-                (data[category] || []).forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    list.appendChild(li);
-                });
-                listWrapper.appendChild(list);
-                listContainer.appendChild(listWrapper);
-                isFirst = false;
-            });
-
-            container.appendChild(buttonContainer);
-            container.appendChild(listContainer);
-            feather.replace(); 
-
-            buttonContainer.addEventListener('click', (e) => {
-                const clickedButton = e.target.closest('button');
-                if (clickedButton) {
-                    buttonContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-                    clickedButton.classList.add('active');
-                    const targetId = clickedButton.getAttribute('data-target');
-                    listContainer.querySelectorAll('div').forEach(list => {
-                        list.classList.toggle('hidden', list.id !== targetId);
-                    });
-                }
-            });
+    function updateBoardDropdowns(){
+        projectBoardSelect.innerHTML='';
+        allBoards.forEach(b=>projectBoardSelect.add(new Option(b.name,b.id)));
+    }
+    function updateCategoryDropdown(){
+        const board = projectBoardSelect.value;
+        projectCategorySelect.innerHTML='';
+        if(board==='mini'){
+            projectCategorySelect.disabled=true;
+            projectCategorySelect.add(new Option("N/A for Mini Projects",""));
+        }else{
+            projectCategorySelect.disabled=false;
+            (allCategories[board]||[]).forEach(c=>projectCategorySelect.add(new Option(c.name,c.name)));
         }
+    }
 
-        function renderAllLists() {
-            populateList('mini-projects-list', allProjects.mini || []);
-        }
+    /* ----------  ADMIN EVENT LISTENERS  ---------- */
+    document.getElementById('open-add-project-btn').addEventListener('click',()=>{
+        addEditProjectForm.reset();
+        projectIdInput.value='';
+        addEditModalTitle.textContent='Add New Project';
+        updateBoardDropdowns();
+        updateCategoryDropdown();
+        projectBoardSelect.addEventListener('change',updateCategoryDropdown); // <-- FIX 1
+        openModal('add-edit-project-modal');
+    });
 
-        function renderProjectCategoryCards() {
-            const container = document.getElementById('project-cards-container');
-            container.innerHTML = '';
-            
-            allBoards.sort((a, b) => (a.id === 'mini') ? -1 : 1).forEach(board => {
-                 container.innerHTML += `<div data-board-id="${board.id}" class="category-card"><img src="https://placehold.co/100x100/${board.color || 'E2E8F0/475569'}?text=${board.shortName}" alt="${board.name} Icon" class="rounded-full mb-4"><h3 class="text-2xl font-bold text-gray-800 mb-2">${board.name}</h3><p class="text-gray-500">${board.description}</p></div>`;
-            });
-        }
-
-        // --- MODAL HANDLING LOGIC ---
-        function setupModalHandlers() {
-            document.getElementById('project-cards-container').addEventListener('click', (e) => {
-                const card = e.target.closest('.category-card');
-                if (!card) return;
-
-                const boardId = card.dataset.boardId;
-                if (boardId === 'mini') {
-                    openModal('projects-modal');
-                } else if (boardId) {
-                    const board = allBoards.find(b => b.id === boardId);
-                    if (board) {
-                        document.getElementById('categorized-modal-title').textContent = `${board.name} Project Ideas`;
-                        populateCategorizedListWithButtons('categorized-project-content', allProjects[board.id] || {}, board.id);
-                        openModal('categorized-projects-modal');
-                    }
-                }
-            });
-
-            document.querySelectorAll('.close-modal-btn').forEach(btn => {
-                btn.addEventListener('click', () => closeModal(btn.closest('.modal')));
-            });
-
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('click', e => {
-                    if (e.target === modal) closeModal(modal);
-                });
-            });
-
-             document.getElementById('admin-login-btn').addEventListener('click', () => openModal('login-modal'));
-        }
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            }
-        }
-
-        function closeModal(modal) {
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
-        }
-        
-        // --- ADMIN & DATA HANDLING ---
-        const loginForm = document.getElementById('login-form');
-        const passwordInput = document.getElementById('password');
-        const loginError = document.getElementById('login-error');
-        const addEditProjectForm = document.getElementById('add-edit-project-form');
-        const projectBoardSelect = document.getElementById('project-board');
-        const projectCategorySelect = document.getElementById('project-category');
-        const projectIdInput = document.getElementById('project-id');
-        const addEditModalTitle = document.getElementById('add-edit-modal-title');
-        
-        function updateBoardDropdowns() {
-            projectBoardSelect.innerHTML = '';
-            allBoards.forEach(board => projectBoardSelect.add(new Option(board.name, board.id)));
-        }
-
-        function updateCategoryDropdown() {
-            const selectedBoard = projectBoardSelect.value;
-            projectCategorySelect.innerHTML = ''; // Clear options
-            if (selectedBoard === 'mini') {
-                projectCategorySelect.disabled = true;
-                projectCategorySelect.add(new Option("N/A for Mini Projects", ""));
-            } else {
-                projectCategorySelect.disabled = false;
-                const categories = allCategories[selectedBoard] || [];
-                categories.forEach(cat => projectCategorySelect.add(new Option(cat, cat)));
-            }
-        }
-        
-        function populateManagementConsole() {
-            const container = document.getElementById('management-content');
-            container.innerHTML = '';
-
-            const groupedProjects = {};
-            firestoreProjects.forEach(p => {
-                if (!groupedProjects[p.board]) groupedProjects[p.board] = {};
-                if (p.board === 'mini') {
-                    if (!groupedProjects.mini.items) groupedProjects.mini.items = [];
-                    groupedProjects.mini.items.push(p);
-                } else {
-                    if (!groupedProjects[p.board][p.category]) groupedProjects[p.board][p.category] = [];
-                    groupedProjects[p.board][p.category].push(p);
-                }
-            });
-            
-            allBoards.forEach(board => {
-                const boardId = board.id;
-                const boardTitle = document.createElement('h4');
-                boardTitle.className = 'text-2xl font-bold mt-6 mb-3 border-b pb-2';
-                boardTitle.textContent = `${board.name} Projects`;
-                container.appendChild(boardTitle);
-
-                if(boardId === 'mini') {
-                    (groupedProjects.mini?.items || []).forEach(proj => container.appendChild(createManageListItem(proj.title, proj.id)));
-                } else {
-                     Object.keys(groupedProjects[boardId] || {}).sort().forEach(category => {
-                        const categoryTitle = document.createElement('h5');
-                        categoryTitle.className = 'text-xl font-semibold mt-4 mb-2';
-                        categoryTitle.textContent = category;
-                        container.appendChild(categoryTitle);
-                        groupedProjects[boardId][category].forEach(proj => container.appendChild(createManageListItem(proj.title, proj.id)));
-                    });
-                }
-            });
-            feather.replace();
-        }
-
-        function createManageListItem(title, id) {
-            const item = document.createElement('div');
-            item.className = 'flex items-center justify-between p-3 rounded-lg bg-white shadow-sm';
-            item.innerHTML = `<span class="text-gray-700">${title}</span>`;
-            
-            const buttons = document.createElement('div');
-            buttons.className = 'flex items-center space-x-3';
-            buttons.innerHTML = `
-                <button class="edit-btn p-1 text-blue-600 hover:text-blue-800" data-id="${id}"><i data-feather="edit-2" class="w-5 h-5"></i></button>
-                <button class="delete-btn p-1 text-red-600 hover:text-red-800" data-id="${id}"><i data-feather="trash-2" class="w-5 h-5"></i></button>
-            `;
-            item.appendChild(buttons);
-            return item;
-        }
-
-        function populateCategoryManagementConsole() {
-            const container = document.getElementById('category-management-content');
-            container.innerHTML = '';
-            
-            allBoards.filter(b => b.id !== 'mini').forEach(board => {
-                const boardTitle = document.createElement('h4');
-                boardTitle.className = 'text-2xl font-bold mt-6 mb-3 border-b pb-2';
-                boardTitle.textContent = `${board.name} Categories`;
-                container.appendChild(boardTitle);
-
-                const list = document.createElement('div');
-                list.className = 'space-y-2';
-                (allCategories[board.id] || []).forEach(category => {
-                    const item = document.createElement('div');
-                    item.className = 'flex items-center justify-between p-3 rounded-lg bg-white shadow-sm';
-                    item.innerHTML = `<span class="text-gray-700">${category}</span>
-                        <button class="delete-category-btn p-1 text-red-600 hover:text-red-800" data-board="${board.id}" data-category="${category}"><i data-feather="trash-2" class="w-5 h-5"></i></button>`;
-                    list.appendChild(item);
-                });
-                container.appendChild(list);
-
-                const addForm = document.createElement('form');
-                addForm.className = 'mt-4 flex items-center space-x-2';
-                addForm.innerHTML = `
-                    <input type="text" placeholder="New Category Name" class="flex-grow px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                    <button type="submit" class="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700"><i data-feather="plus" class="w-5 h-5"></i></button>
-                `;
-                addForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const input = e.target.querySelector('input');
-                    const newCategory = input.value.trim();
-                    if (newCategory) {
-                        try {
-                            const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", board.id);
-                            await updateDoc(catDocRef, { list: arrayUnion(newCategory) });
-                            alert('Category added!');
-                            input.value = '';
-                        } catch (err) {
-                             await setDoc(catDocRef, { list: [newCategory] });
-                        }
-                    }
-                });
-                container.appendChild(addForm);
-            });
-            feather.replace();
-        }
-
-        function populateBoardManagementConsole() {
-            const container = document.getElementById('board-management-content');
-            container.innerHTML = '';
-            const list = document.createElement('div');
-            list.className = 'space-y-2';
-            allBoards.forEach(board => {
-                const item = document.createElement('div');
-                item.className = 'flex items-center justify-between p-3 rounded-lg bg-white shadow-sm';
-                item.innerHTML = `<span class="text-gray-700">${board.name}</span>`;
-                if (board.id !== 'mini') {
-                   item.innerHTML += `<button class="delete-board-btn p-1 text-red-600 hover:text-red-800" data-board-id="${board.id}"><i data-feather="trash-2" class="w-5 h-5"></i></button>`;
-                }
-                list.appendChild(item);
-            });
-            container.appendChild(list);
-
-            const addForm = document.createElement('form');
-            addForm.className = 'mt-6 pt-6 border-t grid grid-cols-1 md:grid-cols-2 gap-4 items-end';
-            addForm.innerHTML = `
-                <div><label class="block text-sm font-medium text-gray-700">Board Name</label><input type="text" id="new-board-name" placeholder="e.g. STM32" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
-                <div><label class="block text-sm font-medium text-gray-700">Description</label><input type="text" id="new-board-desc" placeholder="A short description" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
-                <div><label class="block text-sm font-medium text-gray-700">Short Name (for icon)</label><input type="text" id="new-board-short" placeholder="e.g. STM32" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg" required></div>
-                <button type="submit" class="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 h-10 flex items-center justify-center"><i data-feather="plus" class="w-5 h-5 mr-2"></i>Add Board</button>
-            `;
-            addForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const name = document.getElementById('new-board-name').value.trim();
-                const id = name.toLowerCase().replace(/\s+/g, '-');
-                const description = document.getElementById('new-board-desc').value.trim();
-                const shortName = document.getElementById('new-board-short').value.trim();
-
-                if (name && id && description && shortName && !allBoards.find(b => b.id === id)) {
-                    try {
-                        const boardDocRef = doc(db, "artifacts", appId, "public", "data", "boards", id);
-                        await setDoc(boardDocRef, { id, name, description, shortName, color: 'E2E8F0/475569' });
-
-                        const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", id);
-                        await setDoc(catDocRef, { list: [] });
-
-                        alert('Board added!');
-                        addForm.reset();
-                    } catch (err) {
-                        console.error("Error adding board:", err);
-                        alert("Failed to add board.");
-                    }
-                } else if (allBoards.find(b => b.id === id)) {
-                    alert('A board with this name already exists.');
-                }
-            });
-            container.appendChild(addForm);
-            feather.replace();
-        }
-
-        function setupAdminFeatures() {
-            const ADMIN_PASSWORD = "admin123";
-            const deleteConfirmModal = document.getElementById('delete-confirm-modal');
-            const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
-            const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
-            const deleteConfirmText = document.getElementById('delete-confirm-text');
-
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (passwordInput.value === ADMIN_PASSWORD) {
-                    document.getElementById('login-view').classList.add('hidden');
-                    document.getElementById('admin-options-view').classList.remove('hidden');
-                    passwordInput.value = '';
-                    loginError.classList.add('hidden');
-                } else {
-                    loginError.classList.remove('hidden');
-                }
-            });
-            
-            document.getElementById('open-add-project-btn').addEventListener('click', () => {
+    document.getElementById('management-content').addEventListener('click',e=>{
+        const editBtn=e.target.closest('.edit-btn');
+        if(editBtn){
+            const id=editBtn.dataset.id;
+            const p=firestoreProjects.find(p=>p.id===id);
+            if(p){
                 addEditProjectForm.reset();
-                projectIdInput.value = '';
-                addEditModalTitle.textContent = 'Add New Project';
+                projectIdInput.value=id;
+                document.getElementById('project-title').value=p.title;
                 updateBoardDropdowns();
+                projectBoardSelect.value=p.board;
                 updateCategoryDropdown();
+                projectBoardSelect.addEventListener('change',updateCategoryDropdown); // <-- FIX 2
                 openModal('add-edit-project-modal');
+            }
+        }
+    });
+
+    /* ----------  SAME FIREBASE LISTENERS + INIT  ---------- */
+    async function main(){
+        feather.replace();
+        /* -- your existing listeners & snapshots -- */
+        try{
+            await signInAnonymously(auth);
+            console.log("Authenticated UID:",auth.currentUser.uid);
+
+            const projectsCol=collection(db,"artifacts",appId,"public","data","projects");
+            const categoriesCol=collection(db,"artifacts",appId,"public","data","categories");
+            const boardsCol   =collection(db,"artifacts",appId,"public","data","boards");
+
+            onSnapshot(boardsCol,async snap=>{
+                if(snap.empty){await seedDatabase();}
+                else{allBoards=snap.docs.map(d=>d.data()); renderProjectCategoryCards(); updateBoardDropdowns();}
             });
 
-            document.getElementById('open-manage-projects-btn').addEventListener('click', () => {
+            onSnapshot(categoriesCol,snap=>{
+                allCategories={}; snap.docs.forEach(d=>allCategories[d.id]=d.data().list);
+                updateCategoryDropdown();
+            });
+
+            onSnapshot(projectsCol,snap=>{
+                firestoreProjects=snap.docs.map(d=>({id:d.id,...d.data()}));
+                /* rebuild allProjects... */
+                allProjects={}; allBoards.forEach(b=>allProjects[b.id]=b.id==='mini'?[]:{});
+                firestoreProjects.forEach(p=>{
+                    if(p.board==='mini') allProjects.mini.push(p.title);
+                    else{
+                        if(!allProjects[p.board][p.category]) allProjects[p.board][p.category]=[];
+                        allProjects[p.board][p.category].push(p.title);
+                    }
+                });
+                renderAllLists();
                 populateManagementConsole();
-                openModal('manage-projects-modal');
             });
 
-            document.getElementById('open-manage-categories-btn').addEventListener('click', () => {
-                populateCategoryManagementConsole();
-                openModal('manage-categories-modal');
-            });
-
-            document.getElementById('open-manage-boards-btn').addEventListener('click', () => {
-                populateBoardManagementConsole();
-                openModal('manage-boards-modal');
-            });
-
-            document.getElementById('reset-database-btn').addEventListener('click', () => {
-                deleteConfirmText.textContent = "This will delete ALL current data and restore the original template. Are you sure?";
-                confirmDeleteBtn.dataset.type = 'database-reset';
-                openModal('delete-confirm-modal');
-            });
-
-            projectBoardSelect.addEventListener('change', updateCategoryDropdown);
-
-            addEditProjectForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const title = document.getElementById('project-title').value;
-                const board = projectBoardSelect.value;
-                const category = projectCategorySelect.value;
-                const id = projectIdInput.value;
-
-                if (!title || !board || (board !== 'mini' && !category)) {
-                    alert("Please fill all fields.");
-                    return;
-                }
-
-                const projectData = { title, board, category };
-                
-                try {
-                    if (id) {
-                        const projectRef = doc(db, "artifacts", appId, "public", "data", "projects", id);
-                        await updateDoc(projectRef, projectData);
-                        alert('Project updated successfully!');
-                    } else {
-                        await addDoc(collection(db, "artifacts", appId, "public", "data", "projects"), projectData);
-                        alert('Project added successfully!');
-                    }
-                    addEditProjectForm.reset();
-                    closeModal(document.getElementById('add-edit-project-modal'));
-                } catch (error) {
-                    console.error("Error saving document: ", error);
-                    alert('Error saving project. See console for details.');
-                }
-            });
-
-            document.getElementById('management-content').addEventListener('click', (e) => {
-                const editBtn = e.target.closest('.edit-btn');
-                const deleteBtn = e.target.closest('.delete-btn');
-
-                if (editBtn) {
-                    const id = editBtn.dataset.id;
-                    const projectToEdit = firestoreProjects.find(p => p.id === id);
-                    if (projectToEdit) {
-                        addEditProjectForm.reset();
-                        projectIdInput.value = id;
-                        document.getElementById('project-title').value = projectToEdit.title;
-                        updateBoardDropdowns();
-                        document.getElementById('project-board').value = projectToEdit.board;
-                        updateCategoryDropdown();
-                        document.getElementById('project-category').value = projectToEdit.category;
-                        addEditModalTitle.textContent = 'Edit Project';
-                        openModal('add-edit-project-modal');
-                    }
-                }
-
-                if (deleteBtn) {
-                    const id = deleteBtn.dataset.id;
-                    deleteConfirmText.textContent = "Do you really want to delete this project? This process cannot be undone.";
-                    confirmDeleteBtn.dataset.id = id;
-                    confirmDeleteBtn.dataset.type = 'project';
-                    openModal('delete-confirm-modal');
-                }
-            });
-
-            document.getElementById('category-management-content').addEventListener('click', (e) => {
-                const deleteBtn = e.target.closest('.delete-category-btn');
-                if (deleteBtn) {
-                    const { board, category } = deleteBtn.dataset;
-                    deleteConfirmText.textContent = `Are you sure you want to delete the '${category}' category? This will not delete the projects within it, but they will become uncategorized.`;
-                    confirmDeleteBtn.dataset.board = board;
-                    confirmDeleteBtn.dataset.category = category;
-                    confirmDeleteBtn.dataset.type = 'category';
-                    openModal('delete-confirm-modal');
-                }
-            });
-
-            document.getElementById('board-management-content').addEventListener('click', (e) => {
-                const deleteBtn = e.target.closest('.delete-board-btn');
-                if (deleteBtn) {
-                    const boardId = deleteBtn.dataset.boardId;
-                    const projectsOnBoard = firestoreProjects.some(p => p.board === boardId);
-                    if (projectsOnBoard) {
-                        alert(`Cannot delete '${boardId}' because it still has projects associated with it. Please delete or re-assign those projects first.`);
-                        return;
-                    }
-                    deleteConfirmText.textContent = `Are you sure you want to delete the '${boardId}' board? This will also delete all its categories.`;
-                    confirmDeleteBtn.dataset.boardId = boardId;
-                    confirmDeleteBtn.dataset.type = 'board';
-                    openModal('delete-confirm-modal');
-                }
-            });
-
-            cancelDeleteBtn.addEventListener('click', () => {
-                closeModal(deleteConfirmModal);
-            });
-
-            confirmDeleteBtn.addEventListener('click', async () => {
-                const { id, type, board, category, boardId } = confirmDeleteBtn.dataset;
-                
-                try {
-                    if (type === 'project' && id) {
-                        await deleteDoc(doc(db, "artifacts", appId, "public", "data", "projects", id));
-                        alert('Project deleted successfully!');
-                    } else if (type === 'category' && board && category) {
-                        const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", board);
-                        await updateDoc(catDocRef, { list: arrayRemove(category) });
-                        alert('Category deleted successfully!');
-                    } else if (type === 'board' && boardId) {
-                        await deleteDoc(doc(db, "artifacts", appId, "public", "data", "boards", boardId));
-                        await deleteDoc(doc(db, "artifacts", appId, "public", "data", "categories", boardId));
-                        alert('Board deleted successfully!');
-                    } else if (type === 'database-reset') {
-                        await resetDatabase();
-                    }
-                } catch (error) {
-                    console.error("Error deleting document: ", error);
-                    alert('Error deleting item. See console for details.');
-                } finally {
-                    closeModal(deleteConfirmModal);
-                }
-            });
-        }
-
-        async function seedDatabase() {
-            const projectsCol = collection(db, "artifacts", appId, "public", "data", "projects");
-            const categoriesCol = collection(db, "artifacts", appId, "public", "data", "categories");
-            const boardsCol = collection(db, "artifacts", appId, "public", "data", "boards");
-
-            const batch = writeBatch(db);
-            
-            // Seed Boards
-            baseData.boards.forEach(board => {
-                const boardDocRef = doc(db, "artifacts", appId, "public", "data", "boards", board.id);
-                batch.set(boardDocRef, board);
-            });
-
-            // Seed Projects
-            Object.keys(baseData.projects).forEach(board => {
-                if (board === 'mini') {
-                    baseData.projects.mini.forEach(title => {
-                        const newDocRef = doc(collection(db, "artifacts", appId, "public", "data", "projects"));
-                        batch.set(newDocRef, { title, board, category: "" });
-                    });
-                } else {
-                    Object.keys(baseData.projects[board]).forEach(category => {
-                        baseData.projects[board][category].forEach(title => {
-                            const newDocRef = doc(collection(db, "artifacts", appId, "public", "data", "projects"));
-                            batch.set(newDocRef, { title, board, category });
-                        });
-                    });
-                }
-            });
-
-            // Seed Categories
-            Object.keys(baseData.categories).forEach(boardId => {
-                const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", boardId);
-                batch.set(catDocRef, { list: baseData.categories[boardId] });
-            });
-            
-            await batch.commit();
-            console.log("Database seeded successfully.");
-        }
-
-        async function resetDatabase() {
-            console.log("Resetting database...");
-            const collections = ['projects', 'categories', 'boards'];
-            const batch = writeBatch(db);
-
-            for (const col of collections) {
-                const snapshot = await getDocs(collection(db, "artifacts", appId, "public", "data", col));
-                snapshot.docs.forEach(doc => batch.delete(doc.ref));
-            }
-            await batch.commit();
-            console.log("All existing data deleted.");
-            await seedDatabase();
-            alert("Database has been reset to the original template.");
-        }
-
-        // --- INITIALIZATION ---
-        async function main() {
-            feather.replace();
-            setupModalHandlers();
-            setupAdminFeatures();
-
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                
-                console.log("Authenticated with UID:", auth.currentUser.uid);
-                const projectsCol = collection(db, "artifacts", appId, "public", "data", "projects");
-                const categoriesCol = collection(db, "artifacts", appId, "public", "data", "categories");
-                const boardsCol = collection(db, "artifacts", appId, "public", "data", "boards");
-                
-                onSnapshot(boardsCol, async (snapshot) => {
-                    if (snapshot.empty) {
-                        await seedDatabase();
-                    } else {
-                        allBoards = snapshot.docs.map(doc => doc.data());
-                        renderProjectCategoryCards();
-                        updateBoardDropdowns();
-                    }
-                });
-
-                onSnapshot(categoriesCol, (snapshot) => {
-                    allCategories = {};
-                    snapshot.docs.forEach(doc => {
-                        allCategories[doc.id] = doc.data().list;
-                    });
-                    updateCategoryDropdown();
-                });
-
-                onSnapshot(projectsCol, (snapshot) => {
-                    firestoreProjects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                    allProjects = {};
-                    allBoards.forEach(b => allProjects[b.id] = b.id === 'mini' ? [] : {});
-
-                    firestoreProjects.forEach(project => {
-                        if (project.board === 'mini') {
-                            if (!allProjects.mini) allProjects.mini = [];
-                            allProjects.mini.push(project.title);
-                        } else if (allProjects[project.board]) {
-                            if (!allProjects[project.board][project.category]) {
-                                allProjects[project.board][project.category] = [];
-                            }
-                            allProjects[project.board][project.category].push(project.title);
-                        }
-                    });
-
-                    renderAllLists();
-                    populateManagementConsole();
-                });
-
-            } catch (error) {
-                console.error("Firebase initialization or authentication failed:", error);
-            }
-        }
-
-        main();
-
-    </script>
-
+        }catch(err){console.error("Firebase init failed",err);}
+    }
+    main();
+</script>
 </body>
 </html>

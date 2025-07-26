@@ -1553,21 +1553,23 @@
                 const deleteBtn = e.target.closest('.delete-btn');
 
                 if (editBtn) {
-                    const id = editBtn.dataset.id;
-                    const projectToEdit = firestoreProjects.find(p => p.id === id);
-                    if (projectToEdit) {
-                        addEditProjectForm.reset();
-                        projectIdInput.value = id;
-                        document.getElementById('project-title').value = projectToEdit.title;
-                        updateBoardDropdowns();
-                        document.getElementById('project-board').value = projectToEdit.board;
-                        updateCategoryDropdown();
-                        document.getElementById('project-category').value = projectToEdit.category;
-                        addEditModalTitle.textContent = 'Edit Project';
-                        openModal('add-edit-project-modal');
-                    }
-                }
+    const id = editBtn.dataset.id;
+    const projectToEdit = firestoreProjects.find(p => p.id === id);
+    if (projectToEdit) {
+        addEditProjectForm.reset();
+        projectIdInput.value = id;
+        document.getElementById('project-title').value = projectToEdit.title;
+        updateBoardDropdowns();
+        document.getElementById('project-board').value = projectToEdit.board;
+        updateCategoryDropdown();
+        document.getElementById('project-category').value = projectToEdit.category;
+        addEditModalTitle.textContent = 'Edit Project';
 
+        // Close the big modal first, then open the edit modal
+        closeModal(document.getElementById('manage-projects-modal'));
+        openModal('add-edit-project-modal');
+    }
+}
                 if (deleteBtn) {
                     const id = deleteBtn.dataset.id;
                     deleteConfirmText.textContent = "Do you really want to delete this project? This process cannot be undone.";

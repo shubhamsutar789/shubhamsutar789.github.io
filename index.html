@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Spark</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <title>Project Spark | Custom Engineering Projects</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/000000/processor.png">
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,10 +18,11 @@
             --blue-600: #2563eb;
             --blue-700: #1d4ed8;
             --blue-800: #1e40af;
+            --blue-300: #93c5fd;
             --blue-100: #dbeafe;
             --blue-50: #eff6ff;
             --gray-50: #f9fafb;
-            --gray-100: #f3f4f6; /* Added for subtle hover */
+            --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
             --gray-300: #d1d5db;
             --gray-400: #9ca3af;
@@ -40,7 +42,6 @@
             --green-700: #15803d;
             --white: #ffffff;
             --black: #000000;
-
             --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --ease-in-out-quad: cubic-bezier(0.45, 0.03, 0.52, 0.96);
         }
@@ -54,9 +55,9 @@
             background-color: var(--gray-50);
             color: var(--gray-800);
             margin: 0;
-            line-height: 1.6; /* Improved readability */
-            -webkit-font-smoothing: antialiased; /* Better font rendering */
-            -moz-osx-font-smoothing: grayscale; /* Better font rendering */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -65,6 +66,7 @@
             margin-right: auto;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
+            box-sizing: border-box;
         }
 
         /* --- Buttons --- */
@@ -73,28 +75,22 @@
             padding: 0.75rem 2rem;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-            transition: all 0.3s var(--ease-out-quad); /* Smoother transition */
-            display: inline-flex; /* Use flex for alignment with icons */
-            align-items: center; /* Center content vertically */
-            justify-content: center; /* Center content horizontally */
+            transition: all 0.3s var(--ease-out-quad);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
             border: none;
             cursor: pointer;
-            gap: 0.5rem; /* Space between text and icon */
+            gap: 0.5rem;
         }
         .btn:hover {
-            transform: translateY(-3px) scale(1.02); /* More noticeable hover */
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); /* Enhanced shadow */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
         }
-        .btn:active { /* Add active (press) state */
+        .btn:active {
             transform: translateY(0) scale(0.98);
             box-shadow: 0 2px 4px -2px rgba(0,0,0,0.1);
-        }
-
-        .icon-small {
-            width: 16px;
-            height: 16px;
-            vertical-align: middle; /* Align icons with text */
         }
 
         .btn-primary {
@@ -123,15 +119,15 @@
 
         /* --- Header & Navigation --- */
         .header {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
-            backdrop-filter: blur(12px); /* Stronger blur */
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
             box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 40;
-            transition: box-shadow 0.3s var(--ease-out-quad); /* Smooth shadow transition */
+            transition: box-shadow 0.3s var(--ease-out-quad);
         }
-        .header.scrolled { /* Class added by JS on scroll */
+        .header.scrolled {
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
         }
         .navbar {
@@ -142,7 +138,7 @@
             padding-bottom: 1rem;
         }
         .logo {
-            font-size: 1.75rem; /* Slightly larger logo */
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--gray-900);
             text-decoration: none;
@@ -152,24 +148,24 @@
             color: var(--blue-600);
         }
         .logo:hover {
-            color: var(--blue-700); /* Color change on logo hover */
+            color: var(--blue-700);
         }
         .nav-links {
             display: none;
-            gap: 2.5rem; /* Increased gap */
+            gap: 2.5rem;
         }
         .nav-links a {
             color: var(--gray-600);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s var(--ease-out-quad), transform 0.2s var(--ease-out-quad);
-            position: relative; /* For underline effect */
+            position: relative;
         }
         .nav-links a:hover {
             color: var(--blue-600);
             transform: translateY(-2px);
         }
-        .nav-links a::after { /* Animated underline */
+        .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -201,8 +197,8 @@
 
         /* --- Sections --- */
         .section {
-            padding-top: 6rem; /* More vertical padding */
-            padding-bottom: 6rem;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
         }
         .section-white {
             background-color: var(--white);
@@ -211,39 +207,39 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         .section-title {
-            font-size: 2.75rem; /* Larger title */
+            font-size: 2.25rem;
             font-weight: 700;
             color: var(--gray-800);
             text-align: center;
-            margin-bottom: 1.5rem; /* Increased margin */
+            margin-bottom: 1rem;
         }
         .section-subtitle {
-            font-size: 1.25rem; /* Larger subtitle */
+            font-size: 1.1rem;
             color: var(--gray-500);
             text-align: center;
             margin-top: 0.5rem;
-            margin-bottom: 4rem; /* Increased margin */
-            max-width: 48rem; /* Wider subtitle */
+            margin-bottom: 3rem;
+            max-width: 48rem;
             margin-left: auto;
             margin-right: auto;
         }
 
         /* --- Hero Section --- */
         .hero {
-            padding-top: 8rem; /* More padding */
-            padding-bottom: 8rem;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
             text-align: center;
         }
         .hero-title {
-            font-size: 3.5rem; /* Larger hero title */
+            font-size: 2.75rem;
             font-weight: 800;
             color: var(--gray-800);
             margin-bottom: 1.5rem;
         }
         .hero-subtitle {
-            font-size: 1.35rem; /* Larger hero subtitle */
+            font-size: 1.2rem;
             color: var(--gray-600);
-            max-width: 56rem; /* Wider hero subtitle */
+            max-width: 56rem;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 2.5rem;
@@ -253,46 +249,46 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            gap: 3rem; /* Increased gap */
+            gap: 2rem;
         }
         .feature-item {
             text-align: center;
-            padding: 2rem; /* More padding */
+            padding: 2rem;
             background-color: var(--white);
             border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -4px rgba(0,0,0,0.05); /* Soft shadow */
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -4px rgba(0,0,0,0.05);
             transition: transform 0.3s var(--ease-out-quad), box-shadow 0.3s var(--ease-out-quad);
         }
         .feature-item:hover {
-            transform: translateY(-8px); /* Lift on hover */
+            transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
         }
         .feature-icon-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 4.5rem; /* Larger icon circle */
+            height: 4.5rem;
             width: 4.5rem;
             border-radius: 9999px;
             background-color: var(--blue-100);
             color: var(--blue-600);
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 1.5rem; /* Increased margin */
+            margin-bottom: 1.5rem;
         }
         .feature-icon-wrapper i {
-            width: 2.5rem; /* Larger icons */
+            width: 2.5rem;
             height: 2.5rem;
         }
         .feature-item h3 {
-            font-size: 1.4rem; /* Larger feature title */
-            font-weight: 700; /* Bolder */
+            font-size: 1.4rem;
+            font-weight: 700;
             margin-bottom: 0.75rem;
             color: var(--gray-900);
         }
         .feature-item p {
             color: var(--gray-600);
-            font-size: 1.05rem; /* Slightly larger text */
+            font-size: 1.05rem;
         }
 
         /* --- Project Cards --- */
@@ -312,33 +308,33 @@
             flex-direction: column;
             align-items: flex-start;
             text-align: left;
-            border: 1px solid var(--gray-200); /* Subtle border */
+            border: 1px solid var(--gray-200);
         }
         .category-card:hover {
             box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1), 0 6px 10px -6px rgba(0,0,0,0.1);
-            transform: translateY(-0.75rem); /* More lift */
-            border-color: var(--blue-300); /* Highlight border on hover */
+            transform: translateY(-0.75rem);
+            border-color: var(--blue-300);
         }
         .category-card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1.25rem; /* Increased margin */
+            margin-bottom: 1.25rem;
         }
         .category-card-icon {
-            width: 3.5rem; /* Larger icon circle */
+            width: 3.5rem;
             height: 3.5rem;
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Small shadow for the icon bg */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .category-card-icon i {
-            width: 2rem; /* Larger icons */
+            width: 2rem;
             height: 2rem;
         }
         .category-card h3 {
-            font-size: 1.35rem; /* Larger title */
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--gray-800);
             margin-left: 1rem;
@@ -346,7 +342,7 @@
         .category-card p {
             color: var(--gray-600);
             font-size: 1.05rem;
-            margin-bottom: 1.5rem; /* More space */
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
         .category-card-footer {
@@ -372,23 +368,22 @@
             transition: transform 0.3s var(--ease-out-quad);
         }
         .category-card:hover .category-card-footer i {
-            transform: translateX(6px); /* More pronounced arrow movement */
+            transform: translateX(6px);
         }
 
         /* --- How It Works Section --- */
         .steps-container {
             position: relative;
-            padding-top: 2rem; /* Space for numbers */
+            padding-top: 2rem;
             padding-bottom: 2rem;
         }
         .steps-line {
             display: none;
             position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
+            top: 5.75rem; /* Aligned with the center of the number circles */
+            left: 15%;
+            width: 70%;
             border-top: 2px dashed var(--gray-300);
-            transform: translateY(-50%);
         }
         .steps-grid {
             display: grid;
@@ -402,25 +397,29 @@
             background-color: var(--white);
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
-            position: relative; /* For step number positioning */
+            position: relative;
+            padding-top: 4.5rem;
         }
         .step-number {
+            position: absolute;
+            top: -2.75rem;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 5.5rem; /* Larger step number circle */
+            height: 5.5rem;
             width: 5.5rem;
             border-radius: 9999px;
             background-color: var(--white);
-            border: 3px solid var(--blue-600); /* Solid blue border */
+            border: 3px solid var(--blue-600);
             color: var(--blue-600);
-            margin: -3rem auto 1.5rem; /* Pull up to overlap with line */
-            font-size: 2rem; /* Larger number */
+            font-size: 2rem;
             font-weight: 700;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Shadow for numbers */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
         .step-item h3 {
-            font-size: 1.35rem; /* Larger heading */
+            font-size: 1.35rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
             color: var(--gray-900);
@@ -432,35 +431,37 @@
 
         /* --- Contact Section --- */
         .contact-card {
-            max-width: 56rem;
+            max-width: 40rem;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.7); /* Slightly more transparent */
-            backdrop-filter: blur(8px); /* Added blur for contact card */
-            padding: 2.5rem; /* More padding */
-            border-radius: 1rem; /* More rounded */
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 1.5rem;
+            border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-            border: 1px solid var(--gray-200); /* Subtle border */
+            border: 1px solid var(--gray-200);
         }
         .contact-details {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
             align-items: center;
-            gap: 2.5rem; /* Increased gap */
+            justify-content: center;
+            gap: 2rem;
         }
         .contact-detail-item {
             display: flex;
             align-items: center;
-            gap: 1.25rem; /* Increased gap */
+            gap: 1.25rem;
+            text-align: left;
         }
         .contact-detail-item i {
-            width: 2.25rem; /* Larger icons */
+            width: 2.25rem;
             height: 2.25rem;
             color: var(--blue-600);
+            flex-shrink: 0;
         }
         .contact-detail-item h4 {
-            font-weight: 700; /* Bolder */
-            font-size: 1.25rem; /* Larger text */
+            font-weight: 700;
+            font-size: 1.1rem;
             margin: 0;
             color: var(--gray-900);
         }
@@ -468,12 +469,13 @@
             color: var(--gray-600);
             margin: 0;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 1rem;
             transition: color 0.3s var(--ease-out-quad);
+            word-break: break-all;
         }
         .contact-detail-item a:hover {
             text-decoration: underline;
-            color: var(--blue-700); /* Darker blue on hover */
+            color: var(--blue-700);
         }
         .contact-detail-item a {
             color: var(--blue-600);
@@ -483,85 +485,81 @@
         .footer {
             background-color: var(--gray-800);
             color: var(--white);
-            padding: 2rem 0; /* More padding */
-            margin-top: 3rem; /* Space from section above */
         }
         .footer .container {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
             text-align: center;
             position: relative;
-            display: flex; /* Flex for copyright and admin */
-            justify-content: center;
-            align-items: center;
         }
         .footer p {
             margin: 0;
-            font-size: 0.95rem; /* Slightly larger text */
-            color: var(--gray-300); /* Lighter gray */
+            font-size: 0.95rem;
+            color: var(--gray-300);
         }
         #admin-login-btn {
             position: absolute;
-            right: 1.5rem; /* Keep it on the right */
+            right: 1.5rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--gray-500); /* Slightly darker for better visibility */
+            color: var(--gray-500);
             background: none;
             border: none;
             cursor: pointer;
             transition: color 0.3s var(--ease-out-quad), transform 0.2s var(--ease-out-quad);
-            padding: 0.5rem; /* Add padding for easier click */
+            padding: 0.5rem;
             border-radius: 0.25rem;
         }
         #admin-login-btn:hover {
             color: var(--white);
-            transform: translateY(-50%) scale(1.1); /* Pop a bit on hover */
+            transform: translateY(-50%) scale(1.1);
         }
         #admin-login-btn i {
-            width: 1.35rem; /* Slightly larger icon */
+            width: 1.35rem;
             height: 1.35rem;
         }
-
 
         /* --- Modals --- */
         .modal {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Slightly darker overlay */
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 50;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s var(--ease-in-out-quad), visibility 0.3s var(--ease-in-out-quad);
         }
-        .modal.hidden { /* Use 'visible' instead of removing 'hidden' */
-            display: none;
-           
+        .modal.visible {
+            opacity: 1;
+            visibility: visible;
         }
         .modal-content {
             background-color: var(--white);
-            border-radius: 0.75rem; /* More rounded */
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); /* Stronger shadow */
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35);
             width: 100%;
-            max-height: 95vh; /* Allow some overflow for scrolling */
+            max-height: 95vh;
             display: flex;
             flex-direction: column;
-            transform: scale(0.9); /* Start slightly smaller */
-            transition: transform 0.3s var(--ease-in-out-quad); /* Smooth scale transition */
+            transform: scale(0.95);
+            transition: transform 0.3s var(--ease-in-out-quad);
         }
-        .modal.visible .modal-content { /* Animate content when modal is visible */
+        .modal.visible .modal-content {
             transform: scale(1);
         }
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem; /* More padding */
+            padding: 1.5rem;
             border-bottom: 1px solid var(--gray-200);
         }
         .modal-header h3 {
-            font-size: 1.65rem; /* Larger title */
+            font-size: 1.65rem;
             font-weight: 600;
             margin: 0;
             color: var(--gray-800);
@@ -570,37 +568,37 @@
             color: var(--gray-400);
             background: none;
             border: none;
-            font-size: 3rem; /* Larger 'x' */
+            font-size: 3rem;
             line-height: 1;
             cursor: pointer;
             transition: color 0.3s var(--ease-out-quad), transform 0.2s var(--ease-out-quad);
-            padding: 0.25rem; /* Make clickable area bigger */
+            padding: 0.25rem;
         }
         .close-modal-btn:hover {
             color: var(--gray-800);
-            transform: rotate(90deg); /* Rotate 'x' on hover */
+            transform: rotate(90deg);
         }
         .modal-body {
             padding: 1.5rem;
             overflow-y: auto;
-            flex-grow: 1; /* Allow content to fill available space */
+            flex-grow: 1;
         }
         .modal-body ol {
-            list-style-position: outside; /* Bullet points outside for better readability */
-            list-style-type: disc; /* Ensure it's disc */
+            list-style-position: outside;
+            list-style-type: disc;
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             gap: 0.75rem 2rem;
             color: var(--gray-700);
-            padding-left: 1.25rem; /* More padding for list items */
+            padding-left: 1.25rem;
             margin: 0;
         }
         .modal-body ol li {
-            padding-bottom: 0.25rem; /* Small space between list items */
+            padding-bottom: 0.25rem;
         }
-
+        
         /* Modal-specific sizing */
-        #projects-modal .modal-content { max-width: 68rem; } /* Slightly wider */
+        #projects-modal .modal-content { max-width: 68rem; }
         #categorized-projects-modal .modal-content { max-width: 60rem; }
         #login-modal .modal-content { max-width: 26rem; }
         #add-edit-project-modal .modal-content { max-width: 36rem; }
@@ -608,13 +606,13 @@
         #manage-categories-modal .modal-content { max-width: 60rem; }
         #manage-boards-modal .modal-content { max-width: 52rem; }
         #delete-confirm-modal .modal-content { max-width: 32rem; }
-
+        
         /* Categorized Projects Modal Navigation */
         .modal-nav-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.25rem; /* Increased gap */
-            margin-bottom: 2.5rem; /* More space */
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--gray-200);
         }
@@ -622,7 +620,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.6rem 1.25rem; /* Adjusted padding */
+            padding: 0.6rem 1.25rem;
             border-radius: 0.5rem;
             font-weight: 500;
             color: var(--gray-700);
@@ -630,93 +628,93 @@
             border: 2px solid var(--gray-200);
             transition: all 0.2s var(--ease-out-quad);
             cursor: pointer;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
         .modal-nav-btn:hover {
             border-color: var(--blue-500);
             background-color: var(--blue-50);
             color: var(--blue-700);
-            transform: translateY(-2px); /* Slight lift */
+            transform: translateY(-2px);
         }
         .modal-nav-btn.active {
             background-color: var(--blue-600);
             color: var(--white);
             border-color: var(--blue-600);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* More prominent shadow for active */
-            transform: translateY(-1px); /* Slight lift for active */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transform: translateY(-1px);
         }
         .modal-nav-btn.active:hover {
             background-color: var(--blue-700);
             border-color: var(--blue-700);
-            transform: translateY(-2px); /* Keep hover lift on active */
+            transform: translateY(-2px);
         }
         .modal-nav-btn i {
-            width: 1.1rem; /* Slightly larger icon */
+            width: 1.1rem;
             height: 1.1rem;
             margin-right: 0.6rem;
         }
 
         .categorized-list-wrapper {
-            padding: 1.75rem; /* More padding */
-            border-radius: 0.75rem; /* More rounded */
-            border-left: 5px solid transparent; /* Thicker border */
+            padding: 1.75rem;
+            border-radius: 0.75rem;
+            border-left: 5px solid transparent;
             transition: all 0.3s var(--ease-out-quad);
         }
         .categorized-list-wrapper.active {
             background-color: var(--blue-50);
             border-color: var(--blue-500);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.08); /* Shadow for active list */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.08);
         }
         .categorized-list-wrapper h4 {
-            font-size: 1.35rem; /* Larger title */
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--blue-800);
             margin-top: 0;
-            margin-bottom: 1.25rem; /* More space */
+            margin-bottom: 1.25rem;
         }
         .categorized-list-wrapper ol {
             list-style-type: disc;
             list-style-position: inside;
             padding-left: 0.75rem;
-            line-height: 1.8; /* More space between lines */
+            line-height: 1.8;
         }
         .categorized-list-wrapper ol li {
-            font-size: 1.05rem; /* Slightly larger list item text */
-            margin-bottom: 0.4rem; /* Small vertical spacing */
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
         }
 
         /* --- Admin Panel --- */
         .form-group {
-            margin-bottom: 1.25rem; /* More space */
+            margin-bottom: 1.25rem;
         }
         .form-group label {
             display: block;
             color: var(--gray-700);
-            font-weight: 600; /* Bolder label */
-            margin-bottom: 0.6rem; /* More space */
+            font-weight: 600;
+            margin-bottom: 0.6rem;
             font-size: 0.95rem;
         }
         .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem; /* More padding */
+            width: 90%;
+            padding: 0.75rem 1rem;
             border: 1px solid var(--gray-300);
-            border-radius: 0.6rem; /* More rounded */
+            border-radius: 0.6rem;
             transition: border-color 0.2s var(--ease-out-quad), box-shadow 0.2s var(--ease-out-quad);
-            font-size: 1rem; /* Consistent font size */
+            font-size: 1rem;
             color: var(--gray-800);
             background-color: var(--white);
         }
         .form-control:focus {
             outline: none;
             border-color: var(--blue-500);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3); /* Stronger focus ring */
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
         }
         .form-control:disabled {
-            background-color: var(--gray-100); /* Lighter disabled state */
+            background-color: var(--gray-100);
             cursor: not-allowed;
         }
         #login-error {
-            color: var(--red-600); /* Darker red */
+            color: var(--red-600);
             font-size: 0.9rem;
             margin-top: 0.5rem;
             text-align: center;
@@ -725,19 +723,19 @@
         .admin-options {
             display: flex;
             flex-direction: column;
-            gap: 1rem; /* More space */
+            gap: 1rem;
         }
         .btn-admin, .btn-danger {
             display: flex;
             align-items: center;
             width: 100%;
             text-align: left;
-            padding: 0.85rem 1.25rem; /* More padding */
+            padding: 0.85rem 1.25rem;
             border-radius: 0.6rem;
             font-weight: 600;
             transition: all 0.2s var(--ease-out-quad);
             border: 1px solid var(--gray-300);
-            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05); /* Subtle shadow */
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
             background-color: var(--white);
             color: var(--gray-700);
             cursor: pointer;
@@ -745,11 +743,11 @@
         .btn-admin:hover {
             background-color: var(--gray-100);
             border-color: var(--gray-400);
-            transform: translateY(-2px); /* Lift on hover */
+            transform: translateY(-2px);
             box-shadow: 0 5px 10px rgba(0,0,0,0.08);
         }
         .btn-admin i, .btn-danger i {
-            width: 1.4rem; /* Larger icons */
+            width: 1.4rem;
             height: 1.4rem;
             margin-right: 0.85rem;
         }
@@ -763,7 +761,7 @@
             border-color: var(--red-400);
         }
         #reset-database-btn {
-            margin-top: 1.5rem; /* More space */
+            margin-top: 1.5rem;
         }
         
         /* Management Modals */
@@ -774,156 +772,83 @@
             padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             background-color: var(--white);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Slightly stronger shadow */
-            margin-bottom: 0.6rem; /* More space */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            margin-bottom: 0.6rem;
             transition: transform 0.2s var(--ease-out-quad), box-shadow 0.2s var(--ease-out-quad);
         }
         .management-list-item:hover {
-            transform: translateX(4px); /* Slide slightly on hover */
+            transform: translateX(4px);
             box-shadow: 0 3px 8px rgba(0,0,0,0.12);
         }
-        .management-list-item span {
-            color: var(--gray-700);
-            font-weight: 500;
-        }
+        .management-list-item span { color: var(--gray-700); font-weight: 500; }
         .management-list-item .actions { display: flex; align-items: center; gap: 0.5rem; }
-        .management-list-item .actions button {
-            background: none;
-            border: none;
-            padding: 0.35rem; /* More clickable area */
-            cursor: pointer;
-            transition: transform 0.2s var(--ease-out-quad);
-            border-radius: 0.25rem; /* Slight roundness */
-        }
-        .management-list-item .actions button:hover {
-            transform: scale(1.1); /* Pop on hover */
-            background-color: var(--gray-100);
-        }
+        .management-list-item .actions button { background: none; border: none; padding: 0.35rem; cursor: pointer; transition: transform 0.2s var(--ease-out-quad); border-radius: 0.25rem; }
+        .management-list-item .actions button:hover { transform: scale(1.1); background-color: var(--gray-100); }
         .management-list-item .actions .edit-btn { color: var(--blue-600); }
         .management-list-item .actions .edit-btn:hover { color: var(--blue-800); }
         .management-list-item .actions .delete-btn { color: var(--red-600); }
         .management-list-item .actions .delete-btn:hover { color: var(--red-700); }
         
         .management-section h4 {
-            font-size: 1.65rem; /* Larger heading */
+            font-size: 1.65rem;
             font-weight: 700;
-            margin-top: 2rem; /* More space */
+            margin-top: 2rem;
             margin-bottom: 1rem;
-            padding-bottom: 0.75rem; /* More padding */
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--gray-200);
             color: var(--gray-900);
         }
         .management-section h5 {
-            font-size: 1.35rem; /* Larger sub-heading */
+            font-size: 1.35rem;
             font-weight: 600;
             margin-top: 1.25rem;
             margin-bottom: 0.75rem;
             color: var(--gray-800);
         }
 
-        .delete-confirm-body {
-            text-align: center;
-        }
-        .delete-confirm-body i {
-            width: 4.5rem; /* Larger icon */
-            height: 4.5rem;
-            color: var(--red-500);
-            margin: 0 auto 1.5rem; /* More space */
-        }
-        .delete-confirm-body h3 {
-            font-size: 1.75rem; /* Larger title */
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--gray-900);
-        }
-        .delete-confirm-body p {
-            color: var(--gray-500);
-            font-size: 1.05rem;
-            margin-bottom: 2rem; /* More space */
-        }
-        .delete-confirm-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1.25rem; /* More space */
-        }
+        .delete-confirm-body { text-align: center; }
+        .delete-confirm-body i { width: 4.5rem; height: 4.5rem; color: var(--red-500); margin: 0 auto 1.5rem; }
+        .delete-confirm-body h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--gray-900); }
+        .delete-confirm-body p { color: var(--gray-500); font-size: 1.05rem; margin-bottom: 2rem; }
+        .delete-confirm-actions { display: flex; justify-content: center; gap: 1.25rem; }
 
         /* --- Utility Classes --- */
-        .hidden {
-            display: none !important;
-        }
-        .w-full {
-            width: 100%;
-        }
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
+        .hidden { display: none !important; }
+        .w-full { width: 100%; }
+        .mt-6 { margin-top: 1.5rem; }
 
         /* --- Responsive Design --- */
         @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
-            }
-            .nav-links {
-                display: flex;
-                align-items: center;
-                gap: 2.5rem;
-            }
-            .mobile-nav-btn-container { /* Hide the mobile button container */
-                display: none;
-            }
-            .hero-title {
-                font-size: 4.25rem; /* Even larger on desktop */
-            }
-            .section-title {
-                font-size: 3rem;
-            }
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .project-cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .steps-line {
-                display: block;
-            }
-            .steps-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .contact-details {
-                flex-direction: row;
-                gap: 2rem; /* Adjusted gap */
-            }
-            .modal-body ol {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for lists in modals on desktop */
-            }
-            #projects-modal .modal-body ol {
-                grid-template-columns: repeat(3, 1fr); /* 3 columns for mini projects */
-            }
+            .container { max-width: 768px; }
+            .nav-links { display: flex; align-items: center; }
+            .mobile-nav-btn-container { display: none; }
+            .section { padding-top: 6rem; padding-bottom: 6rem; }
+            .section-title { font-size: 3rem; margin-bottom: 1.5rem; }
+            .section-subtitle { font-size: 1.25rem; margin-bottom: 4rem; }
+            .hero { padding-top: 8rem; padding-bottom: 8rem; }
+            .hero-title { font-size: 4.25rem; }
+            .hero-subtitle { font-size: 1.35rem; }
+            .features-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+            .project-cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-line { display: block; }
+            .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+            .contact-card { padding: 2.5rem; }
+            .contact-details { flex-direction: column; align-items: center; gap: 2.5rem; }
+            .modal-body ol { grid-template-columns: repeat(2, 1fr); }
+            #projects-modal .modal-body ol { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
-            }
-            .project-cards-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-            }
-            #projects-modal .modal-body ol {
-                grid-template-columns: repeat(4, 1fr); /* 4 columns for mini projects */
-            }
+            .container { max-width: 1024px; }
+            .project-cards-grid { grid-template-columns: repeat(3, 1fr); }
+            #projects-modal .modal-body ol { grid-template-columns: repeat(4, 1fr); }
         }
         @media (min-width: 1280px) {
-            .container {
-                max-width: 1280px;
-            }
-            .project-cards-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 cards per row for large screens */
-            }
+            .container { max-width: 1280px; }
+            .project-cards-grid { grid-template-columns: repeat(4, 1fr); }
         }
-        @media (min-width: 1440px) { /* Even larger screens */
-            .container {
-                max-width: 1400px;
-            }
+         @media (min-width: 1440px) {
+            .container { max-width: 1400px; }
         }
     </style>
 </head>
@@ -958,23 +883,23 @@
         </section>
 
         <!-- Features Section -->
-        <section id="features" class="section section-white">
+        <section id="features" class="section">
             <div class="container">
                 <h2 class="section-title">Why Build With Us?</h2>
                 <p class="section-subtitle">We provide more than just a project; we provide a complete learning experience.</p>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper"><i data-feather="book-open" style="width: 2rem; height: 2rem;"></i></div>
+                        <div class="feature-icon-wrapper"><i data-feather="book-open"></i></div>
                         <h3>Complete Documentation</h3>
                         <p>Receive detailed reports, circuit diagrams, and code explanations to understand every aspect of your project.</p>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper"><i data-feather="award" style="width: 2rem; height: 2rem;"></i></div>
+                        <div class="feature-icon-wrapper"><i data-feather="award"></i></div>
                         <h3>Quality Components</h3>
                         <p>We use reliable and high-quality components to ensure your project works flawlessly.</p>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper"><i data-feather="users" style="width: 2rem; height: 2rem;"></i></div>
+                        <div class="feature-icon-wrapper"><i data-feather="users"></i></div>
                         <h3>One-on-One Mentorship</h3>
                         <p>Get personalized guidance and support throughout your project-building journey.</p>
                     </div>
@@ -983,7 +908,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section">
+        <section id="projects" class="section section-white">
             <div class="container">
                 <h2 class="section-title">Project Categories</h2>
                 <p class="section-subtitle">Select a category to explore a curated list of project ideas suitable for all skill levels.</p>
@@ -994,7 +919,7 @@
         </section>
         
         <!-- How It Works Section -->
-        <section id="how-it-works" class="section section-white">
+        <section id="how-it-works" class="section">
             <div class="container">
                 <h2 class="section-title">Get Your Project in 3 Simple Steps</h2>
                 <p class="section-subtitle">A straightforward process from idea to implementation.</p>
@@ -1028,19 +953,26 @@
                 <p class="section-subtitle">Let's turn your idea into reality. Reach out today for a free consultation.</p>
                  <div class="contact-card">
                      <div class="contact-details">
-                         <div class="contact-detail-item"><i data-feather="user"></i><div><h4>Shubham Sutar</h4><p>Project Mentor</p></div></div>
-                         <div class="contact-detail-item"><i data-feather="mail"></i><div><h4>Email</h4><a href="mailto:shubhamsutar789@gmail.com">shubhamsutar789@gmail.com</a></div></div>
-                         <div class="contact-detail-item">
+                         <div class="contact-detail-item" style="display: flex; align-items: center;">
+                            <i data-feather="user"></i>
+                            <div>
+                                <a href="https://in.linkedin.com/in/shubhamsutar789">Shubham Sutar</a>
+                            </div>
+                            </div>
+
+                            <div class="contact-detail-item" style="display: flex; align-items: center;">
+                            <i data-feather="mail"></i>
+                            <div>
+                                <a href="mailto:shubhamsutar789@gmail.com">shubham-sutar</a>
+                            </div>
+                            </div>
+
+                            <div class="contact-detail-item" style="display: flex; align-items: center;">
                             <i data-feather="phone"></i>
                             <div>
-                                <h4>Phone / WhatsApp</h4>
-                                <p>
-                                    <a href="https://wa.me/917410555337?text=Hello%20Project%20Spark%2C%20I%20am%20interested%20in%20your%20engineering%20projects." target="_blank" rel="noopener noreferrer">
-                                        +91 7410555337
-                                    </a>
-                                </p>
+                                <p><a href="https://wa.me/917410555337?text=Hello%20Project%20Spark" target="_blank" rel="noopener noreferrer">+91 7410555337</a></p>
                             </div>
-                        </div>
+                            </div>
                      </div>
                  </div>
             </div>
@@ -1050,34 +982,34 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 ProjectSpark. All rights reserved. Empowering student innovation.</p>
+            <p>&copy; 2024 ProjectSpark. All Rights Reserved. Designed to help students innovate.</p>
             <button id="admin-login-btn">
-                <i data-feather="lock" style="width: 1.25rem; height: 1.25rem;"></i>
+                <i data-feather="lock"></i>
             </button>
         </div>
     </footer>
 
     <!-- MODALS SECTION -->
-    <div id="projects-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3>Mini Project Ideas</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body"><ol id="mini-projects-list"></ol></div></div></div>
-    <div id="categorized-projects-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3 id="categorized-modal-title">Project Ideas</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="categorized-project-content"></div></div></div>
+    <div id="projects-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Mini Project Ideas</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body"><ol id="mini-projects-list"></ol></div></div></div>
+    <div id="categorized-projects-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="categorized-modal-title">Project Ideas</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="categorized-project-content"></div></div></div>
     
     <!-- Admin Login Modal -->
-    <div id="login-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3>Admin Panel</h3><button class="close-modal-btn">&times;</button></div><div id="login-view" class="modal-body"><form id="login-form"><div class="form-group"><label for="password">Password</label><input type="password" id="password" class="form-control"><p id="login-error" class="hidden">Incorrect password.</p></div><button type="submit" class="btn btn-primary w-full">Login</button></form></div><div id="admin-options-view" class="modal-body hidden"><div class="admin-options"><button id="open-add-project-btn" class="btn-admin"><i data-feather="plus-circle"></i>Add New Project</button><button id="open-manage-projects-btn" class="btn-admin"><i data-feather="edit"></i>Manage Projects</button><button id="open-manage-categories-btn" class="btn-admin"><i data-feather="tag"></i>Manage Categories</button><button id="open-manage-boards-btn" class="btn-admin"><i data-feather="server"></i>Manage Boards</button><button id="reset-database-btn" class="btn-danger"><i data-feather="trash-2"></i>Reset Database</button></div></div></div></div>
+    <div id="login-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Admin Panel</h3><button class="close-modal-btn">&times;</button></div><div id="login-view" class="modal-body"><form id="login-form"><div class="form-group"><label for="password">Password</label><input type="password" id="password" class="form-control"><p id="login-error" class="hidden">Incorrect password.</p></div><button type="submit" class="btn btn-primary w-full">Login</button></form></div><div id="admin-options-view" class="modal-body hidden"><div class="admin-options"><button id="open-add-project-btn" class="btn-admin"><i data-feather="plus-circle"></i>Add New Project</button><button id="open-manage-projects-btn" class="btn-admin"><i data-feather="edit"></i>Manage Projects</button><button id="open-manage-categories-btn" class="btn-admin"><i data-feather="tag"></i>Manage Categories</button><button id="open-manage-boards-btn" class="btn-admin"><i data-feather="server"></i>Manage Boards</button><button id="reset-database-btn" class="btn-danger"><i data-feather="trash-2"></i>Reset Database</button></div></div></div></div>
 
     <!-- Add/Edit Project Modal -->
-    <div id="add-edit-project-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3 id="add-edit-modal-title">Add New Project</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body"><form id="add-edit-project-form"><input type="hidden" id="project-id"><div class="form-group"><label for="project-title">Project Title</label><input type="text" id="project-title" class="form-control" required></div><div class="form-group"><label for="project-board">Board</label><select id="project-board" class="form-control"></select></div><div class="form-group"><label for="project-category">Category</label><select id="project-category" class="form-control" required></select></div><button type="submit" id="save-project-btn" class="btn btn-primary w-full mt-6">Save Project</button></form></div></div></div>
+    <div id="add-edit-project-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="add-edit-modal-title">Add New Project</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body"><form id="add-edit-project-form"><input type="hidden" id="project-id"><div class="form-group"><label for="project-title">Project Title</label><input type="text" id="project-title" class="form-control" required></div><div class="form-group"><label for="project-board">Board</label><select id="project-board" class="form-control"></select></div><div class="form-group"><label for="project-category">Category</label><select id="project-category" class="form-control" required></select></div><button type="submit" id="save-project-btn" class="btn btn-primary w-full mt-6">Save Project</button></form></div></div></div>
 
     <!-- Manage Projects Modal -->
-    <div id="manage-projects-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3>Project Management</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="management-content"></div></div></div>
+    <div id="manage-projects-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Project Management</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="management-content"></div></div></div>
     
     <!-- Manage Categories Modal -->
-    <div id="manage-categories-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3>Category Management</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="category-management-content"></div></div></div>
+    <div id="manage-categories-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Category Management</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="category-management-content"></div></div></div>
 
     <!-- Manage Boards Modal -->
-    <div id="manage-boards-modal" class="modal hidden"><div class="modal-content"><div class="modal-header"><h3>Board Management</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="board-management-content"></div></div></div>
+    <div id="manage-boards-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Board Management</h3><button class="close-modal-btn">&times;</button></div><div class="modal-body" id="board-management-content"></div></div></div>
 
     <!-- Delete Confirmation Modal -->
-    <div id="delete-confirm-modal" class="modal hidden"><div class="modal-content"><div class="modal-body delete-confirm-body"><i data-feather="alert-triangle"></i><h3>Are you sure?</h3><p id="delete-confirm-text"></p><div class="delete-confirm-actions"><button id="cancel-delete-btn" class="btn btn-secondary">Cancel</button><button id="confirm-delete-btn" class="btn btn-danger-solid">Delete</button></div></div></div></div>
+    <div id="delete-confirm-modal" class="modal"><div class="modal-content"><div class="modal-body delete-confirm-body"><i data-feather="alert-triangle"></i><h3>Are you sure?</h3><p id="delete-confirm-text"></p><div class="delete-confirm-actions"><button id="cancel-delete-btn" class="btn btn-secondary">Cancel</button><button id="confirm-delete-btn" class="btn btn-danger-solid">Delete</button></div></div></div></div>
 
     <!-- Firebase SDK -->
     <script type="module">
@@ -1189,14 +1121,13 @@
             instruction.style.color = 'var(--gray-500)';
             instruction.style.marginBottom = '1.5rem';
             instruction.textContent = "Select a technology to see related project ideas:";
-            
             container.appendChild(instruction);
-            
+
             const buttonContainer = document.createElement('div');
             buttonContainer.className = "modal-nav-container";
             
             const listContainer = document.createElement('div');
-            
+
             let isFirst = true;
             const categoriesForBoard = allCategories[prefix] || [];
             
@@ -1205,8 +1136,8 @@
                 
                 const button = document.createElement('button');
                 button.className = 'modal-nav-btn';
-                button.innerHTML = `<i data-feather="${categoryObj.icon || 'box'}" class="icon-small"></i>&nbsp<span>${categoryObj.name}</span>`;
-                
+                button.innerHTML = `<i data-feather="${categoryObj.icon || 'box'}"></i><span>${categoryObj.name}</span>`;
+
                 if (isFirst) button.classList.add('active');
                 button.setAttribute('data-target', categoryId);
                 buttonContainer.appendChild(button);
@@ -1319,13 +1250,13 @@
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
-                modal.classList.remove('hidden');
+                modal.classList.add('visible');
             }
         }
 
         function closeModal(modal) {
             if (modal) {
-                modal.classList.add('hidden');
+                modal.classList.remove('visible');
             }
         }
         
@@ -1363,13 +1294,25 @@
 
             const groupedProjects = {};
             firestoreProjects.forEach(p => {
-                if (!groupedProjects[p.board]) groupedProjects[p.board] = {};
+                // Ensure the board key exists as an object.
+                if (!groupedProjects[p.board]) {
+                    groupedProjects[p.board] = {};
+                }
+                
                 if (p.board === 'mini') {
-                    if (!groupedProjects.mini.items) groupedProjects.mini.items = [];
+                    // For mini projects, we use a special 'items' array inside the board object.
+                    if (!groupedProjects.mini.items) {
+                        groupedProjects.mini.items = [];
+                    }
                     groupedProjects.mini.items.push(p);
                 } else {
-                    if (!groupedProjects[p.board][p.category]) groupedProjects[p.board][p.category] = [];
-                    groupedProjects[p.board][p.category].push(p);
+                    // For other boards, group by category.
+                    // Provide a fallback for projects that might be missing a category.
+                    const category = p.category || 'Uncategorized';
+                    if (!groupedProjects[p.board][category]) {
+                        groupedProjects[p.board][category] = [];
+                    }
+                    groupedProjects[p.board][category].push(p);
                 }
             });
             
@@ -1379,10 +1322,10 @@
                 section.className = 'management-section';
                 section.innerHTML = `<h4>${board.name} Projects</h4>`;
 
-                if(boardId === 'mini') {
-                    (groupedProjects.mini?.items || []).forEach(proj => section.appendChild(createManageListItem(proj.title, proj.id)));
-                } else {
-                     Object.keys(groupedProjects[boardId] || {}).sort().forEach(category => {
+                if(boardId === 'mini' && groupedProjects.mini) {
+                    (groupedProjects.mini.items || []).forEach(proj => section.appendChild(createManageListItem(proj.title, proj.id)));
+                } else if (groupedProjects[boardId]) {
+                     Object.keys(groupedProjects[boardId]).sort().forEach(category => {
                         const categoryTitle = document.createElement('h5');
                         categoryTitle.textContent = category;
                         section.appendChild(categoryTitle);
@@ -1491,7 +1434,7 @@
                 <div class="form-group" style="grid-column: 1 / -1;"><label>Description</label><input type="text" id="new-board-desc" placeholder="A short description" class="form-control" required></div>
                 <div class="form-group"><label>Short Name</label><input type="text" id="new-board-short" placeholder="e.g. STM32" class="form-control" required></div>
                 <div class="form-group"><label>Icon Name (<a href="https://feathericons.com/" target="_blank" style="color: var(--blue-600); text-decoration: underline;">feathericons.com</a>)</label><input type="text" id="new-board-icon" placeholder="e.g. cpu" class="form-control" required></div>
-                <button type="submit" class="btn" style="grid-column: 1 / -1; background-color: var(--green-600); color: var(--white); display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.5rem;"><i data-feather="plus"></i>Add Board</button>
+                <button type="submit" class="btn" style="grid-column: 1 / -1; background-color: var(--green-600); color: var(--white); display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem;"><i data-feather="plus"></i>Add Board</button>
             `;
             addForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -1703,39 +1646,38 @@
 
             const batch = writeBatch(db);
             
-            // Seed Boards
             baseData.boards.forEach(board => {
                 const boardDocRef = doc(db, "artifacts", appId, "public", "data", "boards", board.id);
                 batch.set(boardDocRef, board);
             });
 
-            // Seed Projects
             Object.keys(baseData.projects).forEach(board => {
                 if (board === 'mini') {
                     baseData.projects.mini.forEach(title => {
-                        const newDocRef = doc(collection(db, "artifacts", appId, "public", "data", "projects"));
+                        const newDocRef = doc(projectsCol);
                         batch.set(newDocRef, { title, board, category: "" });
                     });
                 } else {
                     Object.keys(baseData.projects[board]).forEach(category => {
                         baseData.projects[board][category].forEach(title => {
-                            const newDocRef = doc(collection(db, "artifacts", appId, "public", "data", "projects"));
+                            const newDocRef = doc(projectsCol);
                             batch.set(newDocRef, { title, board, category });
                         });
                     });
                 }
             });
 
-            // Seed Categories
             Object.keys(baseData.categories).forEach(boardId => {
                 const catDocRef = doc(db, "artifacts", appId, "public", "data", "categories", boardId);
                 batch.set(catDocRef, { list: baseData.categories[boardId] });
             });
             
             await batch.commit();
+            console.log("Database seeded successfully.");
         }
 
         async function resetDatabase() {
+            console.log("Resetting database...");
             const collections = ['projects', 'categories', 'boards'];
             const batch = writeBatch(db);
 
@@ -1744,6 +1686,7 @@
                 snapshot.docs.forEach(doc => batch.delete(doc.ref));
             }
             await batch.commit();
+            console.log("All existing data deleted.");
             await seedDatabase();
             alert("Database has been reset to the original template.");
         }
@@ -1754,6 +1697,12 @@
             setupModalHandlers();
             setupAdminFeatures();
 
+            // Add scroll listener for header shadow
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 10);
+            });
+
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
@@ -1761,6 +1710,7 @@
                     await signInAnonymously(auth);
                 }
                 
+                console.log("Authenticated with UID:", auth.currentUser.uid);
                 const projectsCol = collection(db, "artifacts", appId, "public", "data", "projects");
                 const categoriesCol = collection(db, "artifacts", appId, "public", "data", "categories");
                 const boardsCol = collection(db, "artifacts", appId, "public", "data", "boards");
@@ -1795,7 +1745,6 @@
                                     }
                                 });
                                 
-                                // Now that all data is loaded, render the UI
                                 renderProjectCategoryCards();
                                 updateBoardDropdowns();
                                 updateCategoryDropdown();
